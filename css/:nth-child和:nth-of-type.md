@@ -6,14 +6,19 @@
 
 匹配作为父元素下的第n个子元素，这里的n表示自然数（从1开始），也可以是odd(表示奇数)，even(表示偶数)
 
-如p:nth-child(2),表示匹配的元素是p元素，并且是其父元素下的第2个元素，同时符合这两个条件的只有#p1
+如`p:nth-child(2)`,表示匹配的元素是p元素，并且是其父元素下的第2个元素，同时符合这两个条件的只有#p1
 
-而p:nth-child(1),以前以为可以匹配到#h1，这种理解是错误的，因为这只考虑到了作为其（p）父元素下的第1个元素，没有考虑到还得为p元素，所以该选择器没有匹配到任何元素
+而`p:nth-child(1)`,以前以为可以匹配到#h1，这种理解是错误的，因为这只考虑到了作为其（p）父元素下的第1个元素，没有考虑到还得为p元素，所以该选择器没有匹配到任何元素
 
 ![nth-child](https://github.com/stormzhangbx/front-end-note/blob/master/css/image/nth-child.png "图一")
+
 ### 1.1 :nth-child(n)
 
+该选择器与`:nth-child(n)`相对，表示匹配作为父元素下的倒数第n个子元素
+
 ### 1.2 :nth-last-child(n)
+
+匹配作为父元素的第一个子元素，nth在英文中是第n的简写（如5th,12th）,first表示第一，因此该选择器其实是:nth-child(1)的简写，如`h3:first-child {}`
 
 ### 1.3 :first-child
 
