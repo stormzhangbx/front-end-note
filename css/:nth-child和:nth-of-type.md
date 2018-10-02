@@ -1,7 +1,15 @@
 # :nth-child和:nth-of-type
 
 - [1 :nth-child类](#1-nth-child类)
-  - [1.1 :nth-child(n)](#1.1-nth-child(n))
+  - [1.1 :nth-child(n)](#1.1-nth-childn)
+  - [1.2 :nth-child(n)](#1.2-nth-last-childn)
+  - [1.3 :nth-child(n)](#1.3-first-child)
+  - [1.4 :nth-child(n)](#1.4-last-child)
+- [2 :nth-child类](#2-nth-of-type类)
+  - [2.1 :nth-child(n)](#2.1-nth-of-typen)
+  - [2.2 :nth-child(n)](#2.2-nth-last-of-typen)
+  - [2.3 :nth-child(n)](#2.3-first-of-type)
+  - [2.4 :nth-child(n)](#2.4-last-of-type)
 
 这两个选择器一般与其他选择器（特别是标签选择器）组合使用，匹配的元素既要符合标签选择器又要符合该选择器的定义
 
