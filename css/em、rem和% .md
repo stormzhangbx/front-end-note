@@ -39,11 +39,11 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
 ```css
 .d1 {
   width: 200px;
-		height: 100px;
-		border: 5px solid red;
-		margin: 15px;
-		padding: 10px;
-		line-height: 18px;
+  height: 100px;
+  border: 5px solid red;
+  margin: 15px;
+  padding: 10px;
+  line-height: 18px;
 }
 ```
 
@@ -51,12 +51,12 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
 
 ```css
 .d1 {
-		width: 12.5em; /*1 ÷ 16 × 200 = 12.5em值*/
-		height: 6.25em; /*1 ÷ 16 × 100 = 6.25em值*/
-		border: 0.3125em solid red; /*1 ÷ 16 × 5 = 0.3125em值*/
-		margin: 0.9375em; /*1 ÷ 16 × 15 = 0.9375em值*/
-		padding: 0.625em; /*1 ÷ 16 × 10 = 0.625em值*/
-		line-height: 1.125em; /*1 ÷ 16 × 18 = 1.125em值*/
+  width: 12.5em; /*1 ÷ 16 × 200 = 12.5em值*/
+  height: 6.25em; /*1 ÷ 16 × 100 = 6.25em值*/
+  border: 0.3125em solid red; /*1 ÷ 16 × 5 = 0.3125em值*/
+  margin: 0.9375em; /*1 ÷ 16 × 15 = 0.9375em值*/
+  padding: 0.625em; /*1 ÷ 16 × 10 = 0.625em值*/
+  line-height: 1.125em; /*1 ÷ 16 × 18 = 1.125em值*/
 }
 ```
 
@@ -76,4 +76,13 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
 
 ## 2 rem
 
+rem是全部的长度都相对于根元素，根元素是谁？<html>元素。通常做法是给html元素设置一个字体大小，然后其他元素的长度单位就为rem。
+
 ## 3 %
+
+`box-size: content-box;`时：
+- width：这个属性定义元素内容区的宽度，在内容区外面可以增加内边距、边框和外边距。
+- height：这个属性定义元素内容区的高度，在内容区外面可以增加内边距、边框和外边距。
+`box-size: content-box;`时：
+- width：这个属性定义元素内容区的宽度，在内容区外面可以增加内边距、边框和外边距。
+- height：这个属性定义元素内容区的高度，在内容区外面可以增加内边距、边框和外边距。
