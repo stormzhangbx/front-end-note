@@ -14,21 +14,18 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
  
 1 浏览器默认字体大小是16px。
 
-2 font-size: 2em;字体大小单位如果是em，则相对的始终（一定）是父元素字体大小，如
+2 `font-size: 2em;`字体大小单位如果是em，则相对的始终（一定）是父元素字体大小，如
 
-3 元素自身没有设置字号大小时，元素的width、height、line-height、margin、padding、border等值转换都按下面公式转换:
+3 元素自身没有设置字号大小时，元素的width、height、line-height、margin、padding、border等值转换都按下面公式转换：
 **(1/父元素的font-size值) * 需转换的像素值**
 
-4 元素设置了字体大小，那么字体大小的转换依旧按第二条公式计算，也就是下面的（此条结论是对2的具体说明）:
+4 元素设置了字体大小，那么字体大小的转换依旧按第二条公式计算，也就是下面的（此条结论是对2的具体说明）：
 **(1/父元素的font-size值) * 需转换的像素值**
 
-5 元素设置了字体大小，此元素的其他属性，如“border、width、height、padding、margin、line-height”计算就需要按照下面的公式来计算：
+5 元素设置了字体大小，此元素的其他属性，如border、width、height、padding、margin、line-height计算就需要按照下面的公式来计算：
 **(1/元素自身的font-size值) * 需转换的像素值**
 
 ```html
-<style>
-  
-</style>
 ...
 <body>
   <div class="d1">
@@ -37,6 +34,45 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
 </body>
 ```
 
+假设div.d2需要的样式如下：
+
+```css
+.d1 {
+  width: 200px;
+		height: 100px;
+		border: 5px solid red;
+		margin: 15px;
+		padding: 10px;
+		line-height: 18px;
+}
+```
+
+按照上述结论3，将px转换为em
+
+```css
+.d1 {
+		width: 12.5em; /*1 ÷ 16 × 200 = 12.5em值*/
+		height: 6.25em; /*1 ÷ 16 × 100 = 6.25em值*/
+		border: 0.3125em solid red; /*1 ÷ 16 × 5 = 0.3125em值*/
+		margin: 0.9375em; /*1 ÷ 16 × 15 = 0.9375em值*/
+		padding: 0.625em; /*1 ÷ 16 × 10 = 0.625em值*/
+		line-height: 1.125em; /*1 ÷ 16 × 18 = 1.125em值*/
+}
+```
+
+接下来给div.d2新增一个样式`font-size: 14px`，此时font-size按照结论4计算，其他样式值按照结论5计算
+
+```css
+.d1 {
+  font-size: 0.875em; /*1 ÷ 16 × 14= 0.875em值*/ 
+  width: 14.2857em; /*1 ÷ 14 × 200 = 14.2857em值*/ 
+  height: 7.1429em; /*1 ÷ 14 × 100 = 7.1429em值*/ 
+  border: 0.357em solid red; /*1 ÷ 14 × 5 = 0.357em值*/ 
+  margin: 1.071em; /*1 ÷ 14 × 15 = 1.071em值*/ 
+  padding: 0.714em; /*1 ÷ 14 × 10 = 0.714em值*/ 
+  line-height: 1.2857em; /*1 ÷ 14 × 18 = 1.2857em值*/
+}
+```
 
 ## 2 rem
 
