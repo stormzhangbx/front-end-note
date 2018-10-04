@@ -88,6 +88,60 @@ rem是全部的长度都相对于根元素，根元素是谁？<html>元素。�
 - width：设置的就是内容区+左右内边距+边框水平方向长度。
 - height：设置的就是内容区+左右内边距+边框垂直方向长度。
 
-padding，margin,width这些属性的百分比始终以父容器的内容区宽度为基准，而height是以父容器的高度为基准（若父容器没有设置高度，即height的值为auto,则浏览器会设置子容器的height为auto），这句话重点有两个：
+1 padding，margin,width这些属性的百分比始终（在非绝对定位情况下）以父容器的内容区宽度为基准，而height是以父容器的高度为基准（若父容器没有设置高度，即height的值为auto,则浏览器会设置子容器的height为auto），这句话重点有两个：
 -	是以内容区为基准
 -	padding，margin,width是以内容区宽度为基准，height是以内容区高度为基准
+
+如：
+```html
+···
+<style>
+ .wrapper {
+   position: relative; /* 该属性对下面计算结果无影响，可以注释掉*/
+   width: 400px;
+   height: 300px;
+   padding: 20px 40px;
+   border: 10px solid red;
+ }
+ .test {
+   width: 50%; /* 400/2=200px */
+   height: 50%; /* 300/2=150px */
+   padding: 10%; /* 400/10=40px */
+   margin: 1%; /* 400/100=4px */
+   border: 1px solid black;
+ }
+</style>
+<body>
+  <div class="wrapper">
+    <div class="test">hello</div>
+  </div>
+</body>
+```
+2  对于`position:relative;`的元素而言，padding，margin,width这些属性的百分比以已定位祖先元素内容区+左右内边距水平方向长度计算，例如最近已定位祖先元素的width为100px，内边距为10px，则top:50%就是60px。如：
+```html
+···
+<style>
+ .wrapper {
+   position: relative; /* 该属性对下面计算结果无影响，可以注释掉*/
+   width: 400px;
+   height: 300px;
+   padding: 20px 40px;
+   border: 10px solid red;
+ }
+ .test {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 50%; /* (400+40*2)/2=240px */
+   height: 50%; /* (300+20*2)/2=170px */
+   padding: 10%; /* (400+40*2)/10=48px */
+   margin: 1%; /* (400+40*2)/100=4.8px */
+   border: 1px solid black;
+ }
+</style>
+<body>
+  <div class="wrapper">
+    <div class="test">hello</div>
+  </div>
+</body>
+```
