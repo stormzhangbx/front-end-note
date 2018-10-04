@@ -15,7 +15,9 @@ em是一个相对单位，相对的计算必然会有一个参考物，那么这
 font-size: 2em;字体大小单位如果是em，则相对的始终（一定）是父元素字体大小，如
 
 元素自身没有设置字号大小时，元素的width、height、line-height、margin、padding、border等值转换都按下面公式转换:
+
 <p style="color: red;text-align: center;">(1/父元素的font-size值) * 需转换的像素值</p>
+
 ```html
 <style>
   
