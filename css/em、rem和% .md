@@ -117,7 +117,7 @@ rem是全部的长度都相对于根元素，根元素是谁？<html>元素。�
   </div>
 </body>
 ```
-2  对于`position:relative;`的元素而言，padding，margin,width这些属性的百分比以已定位祖先元素内容区+左右内边距水平方向长度计算，例如最近已定位祖先元素的width为100px，内边距为10px，则top:50%就是60px。如：
+2  对于`position:relative;`的元素而言，padding，margin,width这些属性的百分比以最近已定位祖先元素内容区+左右内边距水平方向长度计算，例如最近已定位祖先元素的width为100px，内边距为10px，则top:50%就是60px。如：
 ```html
 ···
 <style>
