@@ -339,7 +339,7 @@ const stamp2date = (timeStamp, seperator='/') => {
  * ```javascript
  * var arr = [ 4, 5, 7, 1, 3, 4, 6 ];
  *
- * UE.utils.removeItem( arr, 4 );
+ * removeItem( arr, 4 );
  * //output: [ 5, 7, 1, 3, 6 ]
  * console.log( arr );
  *
@@ -390,22 +390,22 @@ const trim = (str) => {
  * ```javascript
  *
  * //output: true
- * console.log( UE.utils.isEmptyObject( {} ) );
+ * console.log( isEmptyObject( {} ) );
  *
  * //output: true
- * console.log( UE.utils.isEmptyObject( [] ) );
+ * console.log( isEmptyObject( [] ) );
  *
  * //output: true
- * console.log( UE.utils.isEmptyObject( "" ) );
+ * console.log( isEmptyObject( "" ) );
  *
  * //output: false
- * console.log( UE.utils.isEmptyObject( { key: 1 } ) );
+ * console.log( isEmptyObject( { key: 1 } ) );
  *
  * //output: false
- * console.log( UE.utils.isEmptyObject( [1] ) );
+ * console.log( isEmptyObject( [1] ) );
  *
  * //output: false
- * console.log( UE.utils.isEmptyObject( "1" ) );
+ * console.log( isEmptyObject( "1" ) );
  *
  * ```
  */
@@ -437,6 +437,13 @@ const isMobile = () => {
 /**
  * 自定义判断元素类型
  * @param {*} obj 
+ * @example
+ * ```javascript
+ * let arr = [1, 2, 3, 4]
+ * 
+ * //output: 'array'
+ * console.log(toType(arr))
+ * ```
  */
 const toType = (obj) => {
   return Object.prototype.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
@@ -481,6 +488,7 @@ const isJSON = (str) => {
     }
   }
 }
+
 /**
  * js中生成唯一id的方法
  */
@@ -504,7 +512,7 @@ const newGuid = () => {
 };
 
 /*根据出生日期算出年龄*/
-const jsGetAge = (strBirthday) => {       
+const jsGetAge = (strBirthday) => {
     var returnAge;
     var strBirthdayArr=strBirthday.split("-");
     var birthYear = strBirthdayArr[0];
@@ -516,44 +524,62 @@ const jsGetAge = (strBirthday) => {
     var nowMonth = d.getMonth() + 1;
     var nowDay = d.getDate();
     
-    if(nowYear == birthYear){
+    if (nowYear == birthYear) {
         returnAge = 0;//同年 则为0岁
-    }
-    else{
-        var ageDiff = nowYear - birthYear ; //年之差
-        if(ageDiff > 0){
-            if(nowMonth == birthMonth) {
+    } else {
+        var ageDiff = nowYear - birthYear; //年之差
+        if (ageDiff > 0) {
+            if (nowMonth == birthMonth) {
                 var dayDiff = nowDay - birthDay;//日之差
-                if(dayDiff < 0)
-                {
+                if(dayDiff < 0) {
                     returnAge = ageDiff - 1;
-                }
-                else
-                {
+                } else {
                     returnAge = ageDiff ;
                 }
-            }
-            else
-            {
+            } else {
                 var monthDiff = nowMonth - birthMonth;//月之差
-                if(monthDiff < 0)
-                {
+                if(monthDiff < 0) {
                     returnAge = ageDiff - 1;
-                }
-                else
-                {
+                } else {
                     returnAge = ageDiff ;
                 }
             }
-        }
-        else
-        {
+        } else {
             returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
         }
     }
-    
     return returnAge;//返回周岁年龄
-    
+}
+
+/**
+ * 将数组的某一元素上移或者下移
+ * @param {string} type 
+ * @param {array} array 
+ * @param {number} index
+ * @example
+ * ```javascript
+ * let arr = ['1', '2', '3', '4']
+ * //output: false
+ * console.log(upOrDown('up', arr, 0))
+ * 
+ * //output: ['2', '1', '3', '4']
+ * console.log(upOrDown('up', arr, 1))
+ * ```
+ */
+const upOrDown = (type, array, index) => {
+    if (type === 'up' && index === 0) {
+        return false
+    } else if (type === 'down' && index === (array.length - 1)) {
+        return false
+    }
+    var changeItem = type === 'up' ? array[index-1] : array[index+1]
+    if (type === 'up') {
+        array.splice(index-1, 1, array[index])
+    } else {
+        array.splice(index+1, 1, array[index])
+    }
+    array.splice(index, 1, changeItem)
+    return array
 }
 
 export const utils = {
@@ -573,5 +599,6 @@ export const utils = {
   trim,
   isEmptyObject,
   toType,
-  jsGetAge
+  jsGetAge,
+  upOrDown
 }
