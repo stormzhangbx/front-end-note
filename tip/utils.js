@@ -572,11 +572,11 @@ const upOrDown = (type, array, index) => {
     } else if (type === 'down' && index === (array.length - 1)) {
         return false
     }
-    var changeItem = type === 'up' ? array[index-1] : array[index+1]
+    let changeItem = type === 'up' ? array[index-1] : array[index+1]
     if (type === 'up') {
-        array.splice(index-1, 1, array[index])
+        array.splice(index - 1, 1, array[index])
     } else {
-        array.splice(index+1, 1, array[index])
+        array.splice(index + 1, 1, array[index])
     }
     array.splice(index, 1, changeItem)
     return array
