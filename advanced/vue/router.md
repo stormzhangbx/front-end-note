@@ -67,8 +67,7 @@
 :--:|:--|:--
 字符串|`<router-link to="/detail"></router-link>`<br>`<router-link :to="'/detail'"></router-link>`|`this.$router.push('/detail')`
 对象<br/>简单|`<router-link :to="{path:'/detail'}"></router-link>`|`this.$router.push({path: '/detail'})`
-对象<br/>动态路由|`<router-link :to="{path:'/detail/1'}"></router-link>`<br/>这种写法的前提是设置了命名路由，即有name属性,注意params的值是个对象|`this.$router.push({path: '/detail/1'})`
+对象<br/>动态路由|`<router-link :to="{path: '/detail/1'}"></router-link>`<br/>这种写法的前提是设置了命名路由，即有name属性,注意params的值是个对象|`this.$router.push({path: '/detail/1'})`
 对象<br/>含`params`|`<router-link :to="{name: 'detail', params: {age: 20}}"></router-link>`|`this.$router.push({name: 'detail', params: {age: 20}})`
 对象<br/>含`query`|`<router-link :to="{path: '/detail', query: {age: 20}}"></router-link>`|`this.$router.push({path: '/detail', query: {age: 20}})`
 
-  
