@@ -576,9 +576,9 @@ const jsGetAge = (strBirthday) => {
 
 /**
  * 将数组的某一元素上移或者下移
- * @param {string} type 
- * @param {array} array 
- * @param {number} index
+ * @param {string} type 操作类型，'up'表示上移，'down'表示下移
+ * @param {array} array 要操作的数组
+ * @param {number} index 要操作数组项的索引
  * @example
  * ```javascript
  * let arr = ['1', '2', '3', '4']
