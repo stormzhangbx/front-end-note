@@ -1,3 +1,5 @@
+## 传参
+### data
 axios中规定了'PUT', 'POST', 和 'PATCH'传参是通过如下方式
 
 ```js
@@ -25,3 +27,6 @@ axios中规定了'PUT', 'POST', 和 'PATCH'传参是通过如下方式
   }
 }
 ```
+
+### params
+get请求通过`params`来传参
