@@ -130,8 +130,8 @@ const toType = (obj) => {
 
 const arrMap = (oldArr) => {
   const newArr = []
-  const obj = {}
   oldArr.forEach(item => {
+    const obj = {}
     for (let i in item) {
       if (toType(item[i]) !== 'array') {
         obj[i] = item[i]
