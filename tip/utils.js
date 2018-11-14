@@ -106,132 +106,6 @@ const fixColor = (name, value) => {
   return value;
 }
 
-/*
- * 通过递归生成一个与arr结构
- * 相似的新对象数组
- */
-const change1 = (arr) => {
-  var tem = [] // 声明一个临时数组
-  arr.forEach(item => { // 遍历输入数组arr的每一项（为对象）
-    let obj = {  // 这里设置新的结构
-      place: item.name,
-      children: []
-    }
-    if(item.children && item.children.length !== 0){
-      obj.children = change1(item.children)
-    }
-    tem.push(obj)
-  });
-  return tem
-}
-const change2 = (arr) => {
-  var tem = []
-  arr.forEach(item => {
-    let obj = {
-      place: item.name,
-    }
-    if(item.children && item.children.length !== 0){
-      obj.children = change2(item.children)
-    }
-    tem.push(obj)
-  });
-  return tem
-}
-/* var arr1 = [
-  {
-    name: 'china',
-    children: [
-      {
-        name: 'hubei',
-        children: [
-          {
-            name: 'huangshi',
-            children: []  //对象参数由name和children组成，children即使为空，也要写上
-          }
-        ]
-      }
-
-    ]
-  },
-  {
-    name: 'japan',
-    children: [
-      {
-        name: 'tokyo',
-        children: []
-      }
-    ]
-  }
-]
-console.log(change1(arr1))
-
-var arr2 = [
-  {
-    name: 'china',
-    children: [
-      {
-        name: 'hubei',
-        children: [
-          {
-            name: 'huangshi',
-          }
-        ]
-      }
-
-    ]
-  },
-  {
-    name: 'japan',
-    children: [
-      {
-        name: 'tokyo',
-      }
-    ]
-  }
-]
-console.log(change2(arr2)) */
-
-/**
- * 上述方法的另外一种实现形式
- * @param {array} itemList 结构是对象数组
- */
-const transfrom = (itemList) => {
-  const itemListNew = itemList.map(item => {
-    let tem = {
-      test: false,
-      structureName: item.structureName,
-      structureId: item.structureId,
-      children: []  //没有子代有两种形式，一种children: []，一种直接没有children这项。
-    }
-    if(item.children && item.children.length > 0){
-      tem.children = transfrom(item.children)
-    }
-    return tem
-  })
-  return itemListNew
-}
-/* var itemList = [
-  {
-    structureName: '首页',
-    structureId: 1,
-    children: [
-      {
-        structureName: '国内',
-        structureId: 2,
-      },
-      {
-        structureName: '国外',
-        structureId: 3,
-      }
-    ]
-
-  },
-  {
-    structureName: '体育',
-    structureId: 4,
-  }
-] */
-
 /**
  * 从已知对象数组中取出符合条件项所在的对象
  * @param {Array} arr
@@ -310,46 +184,6 @@ const highLightingObj = (json) => {
       return '<span class="' + cls + '">' + match + '</span>';
     });
   }
-}
-
-/**
- * 将事件戳转化为日期（时间）
- * @param { Number } timeStamp 需要转换的事件戳
- * @param { String } seperator 分隔符
- */
-const stamp2date = (timeStamp, seperator='/') => {
-  const oDate =  new Date(timeStamp)
-  const year = oDate.getFullYear()
-  const month = (oDate.getMonth() + 1) < 10 ? '0' + (oDate.getMonth() + 1) : (oDate.getMonth() + 1)
-  const date = oDate.getDate() < 10 ? '0' + oDate.getDate() : oDate.getDate()
-  const hourse = oDate.getHours() < 10 ? '0' + oDate.getHours() : oDate.getHours()
-  const minute = oDate.getMinutes() < 10 ? '0' + oDate.getMinutes() : oDate.getMinutes()
-  const second = oDate.getSeconds() < 10 ? '0' + oDate.getSeconds() : oDate.getSeconds()
-  const d = `${year}${seperator}${month}${seperator}${date} ${hourse}${seperator}${minute}${seperator}${second}`
-  return d
-}
-
-// 格式化时间
-const formatDate = (time, format = 'YY-MM-DD hh:mm:ss') => {
-    var date = new Date(time);
-    var year = date.getFullYear(),
-        month = date.getMonth() + 1, //月份是从0开始的
-        day = date.getDate(),
-        hour = date.getHours(),
-        min = date.getMinutes(),
-        sec = date.getSeconds();
-    var preArr = Array.apply(null, Array(10)).map(function (elem, index) {
-        return '0' + index;
-    }); // 开个长度为10的数组 格式为 00 01 02 03
-
-    var newTime = format.replace(/YY/g, year)
-        .replace(/MM/g, preArr[month] || month)
-        .replace(/DD/g, preArr[day] || day)
-        .replace(/hh/g, preArr[hour] || hour)
-        .replace(/mm/g, preArr[min] || min)
-        .replace(/ss/g, preArr[sec] || sec);
-
-    return newTime;
 }
 
 /**
@@ -534,46 +368,6 @@ const newGuid = () => {
   });
 };
 
-/*根据出生日期算出年龄*/
-const jsGetAge = (strBirthday) => {
-    var returnAge;
-    var strBirthdayArr=strBirthday.split("-");
-    var birthYear = strBirthdayArr[0];
-    var birthMonth = strBirthdayArr[1];
-    var birthDay = strBirthdayArr[2];
-    
-    d = new Date();
-    var nowYear = d.getFullYear();
-    var nowMonth = d.getMonth() + 1;
-    var nowDay = d.getDate();
-    
-    if (nowYear == birthYear) {
-        returnAge = 0;//同年 则为0岁
-    } else {
-        var ageDiff = nowYear - birthYear; //年之差
-        if (ageDiff > 0) {
-            if (nowMonth == birthMonth) {
-                var dayDiff = nowDay - birthDay;//日之差
-                if(dayDiff < 0) {
-                    returnAge = ageDiff - 1;
-                } else {
-                    returnAge = ageDiff ;
-                }
-            } else {
-                var monthDiff = nowMonth - birthMonth;//月之差
-                if(monthDiff < 0) {
-                    returnAge = ageDiff - 1;
-                } else {
-                    returnAge = ageDiff ;
-                }
-            }
-        } else {
-            returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
-        }
-    }
-    return returnAge;//返回周岁年龄
-}
-
 /**
  * 将数组的某一元素上移或者下移
  * @param {string} type 操作类型，'up'表示上移，'down'表示下移
@@ -612,17 +406,12 @@ export const utils = {
   highlightColor,
   getRandomColor,
   fixColor,
-  change1,
-  change2,
   getItem,
   queryStr2obj,
   highLightingObj,
-  stamp2date,
-  formatDate,
   removeItem,
   trim,
   isEmptyObject,
   toType,
-  jsGetAge,
   upOrDown
 }
