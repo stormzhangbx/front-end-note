@@ -133,7 +133,7 @@ const arrMap = (oldArr) => {
   oldArr.forEach(item => {
     const obj = {}
     for (let i in item) {
-      if (toType(item[i]) !== 'array') {
+      if (i !== 'friends') {
         obj[i] = item[i]
       } else {
         item[i].forEach(subItem => {

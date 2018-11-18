@@ -115,3 +115,13 @@ const getBirAndSex = (idCard) => {
 
   return { birthday, sex }
 }
+
+/**
+ * 通过日期获取中文星期几
+ * @param {*} date 日期参数
+ */
+const getWeek = (date) => {
+  const day = new new(date).getDay()
+  const mapWeek = ['日', '一',  '二', '三', '四', '五', '六']
+  return mapWeek[day]
+}

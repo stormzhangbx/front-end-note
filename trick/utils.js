@@ -1,26 +1,29 @@
 /**
  * 拼接对象参数到url
- * @param { String } url 链接地址
- * @param { Object } param 对象参数
+ * @param {string} url 链接地址
+ * @param {object} param 对象参数
+ * @example
+ * // returns '/info?name=Jack&age=20'
+ * joinUrl('/info', {name: 'Jack', age: 20})
  */
-const createUrl = (url, param) => {
-    var links = "";
-    $.each(param, function (key, value) {
-        links += "&" + key + "=" + value;
-    });
-    var newUrl = url + "?" + links.substr(1);
-	return newUrl.replace(" ","")
+const joinUrl = (url, params) => {
+  let queryStr = ''
+  for (let i in params) {
+    queryStr += `&${i}=${params[i]}`
+  }
+  const newUrl = `${url}?${queryStr.substr(1)}`
+  return newUrl.replace(' ', '')
 }
 
 /**
  * 获取url指定参数值
- * @param { String } name url参数名称
+ * @param {string} name url参数名称
  */
 const getQueryString = (name) => {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return decodeURI(r[2]);
-    return null;
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) return decodeURI(r[2]);
+  return null;
 }
 
 /**
@@ -399,8 +402,19 @@ const upOrDown = (type, array, index) => {
     return array
 }
 
-export const utils = {
-  createUrl,
+/**
+ * 判断对象是否为{}，也可以通过JSON.stringify(a) === '{}'来判断
+ * @param {object} obj 
+ */
+const isEmptyObject1 = (obj) => {
+  for (let i in obj) {
+    return false
+  }
+  return true
+}
+
+const utils = {
+  joinUrl,
   getQueryString,
   getParam,
   highlightColor,
@@ -412,6 +426,9 @@ export const utils = {
   removeItem,
   trim,
   isEmptyObject,
+  isEmptyObject1,
   toType,
   upOrDown
 }
+
+export default utils
