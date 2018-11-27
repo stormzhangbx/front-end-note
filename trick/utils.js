@@ -188,10 +188,6 @@ export default {
     return str.replace(/(^[ \t\n\r]+)|([ \t\n\r]+$)/g, '')
   },
 
-
-
-
-
   /**
    * 参数过滤函数,除去obj中参数值为null的项（如果参数值是对象或者数组，会继续除去其中的null项）
    * @param {object} obj
@@ -204,9 +200,9 @@ export default {
       if (toType(obj[i]) === 'string') {
         obj[i] = obj[i].trim()
       } else if (toType(obj[i]) === 'object') {
-        obj[i] = filterNull(obj[i])
+        obj[i] = this.filterNull(obj[i])
       } else if (toType(obj[i]) === 'array') {
-        obj[i] = filterNull(obj[i])
+        obj[i] = this.filterNull(obj[i])
       }
     }
     return o
@@ -241,6 +237,6 @@ export default {
    * factorial(4) // 24
    */
   factorial (n) {
-    return n < 2 ? n : n * this.factorial(n-1)
+    return n < 2 ? n : n * this.factorial(n-1) // 递归
   }
 }

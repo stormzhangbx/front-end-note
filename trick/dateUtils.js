@@ -151,5 +151,26 @@ export default {
     const day = new new(date).getDay()
     const mapWeek = ['日', '一',  '二', '三', '四', '五', '六']
     return mapWeek[day]
+  },
+
+  /**
+   * 获取当前月份第一天日期
+   */
+  getCurMonthFirst () {
+    let date = new Date()
+    date.setDate(1)
+    return date
+  },
+
+  /**
+   * 获取当前月份最后一天日期
+   */
+  getCurMonthLast () {
+    let date = new Date()
+    let curMonth = date.getMonth()
+    let nextMonth = ++curMonth
+    let nextMonthFirstDay = new Date(date.getFullYear(), nextMonth, 1)
+    const oneDay = 24 * 60 * 60 * 1000
+    return new Date(nextMonthFirstDay - oneDay)
   }
 }

@@ -1,5 +1,6 @@
 module.exports = {
-  root: true,  
+  root: true,
+  extends: 'standard',
   parserOptions: {
     sourceType: 'module'
   },
