@@ -19,37 +19,20 @@ export default {
 
   /**
    * 判断obj对象是否为空
-   * @method isEmptyObject
    * @param { * } obj 需要判断的对象
    * @remind 如果判断的对象是NULL， 将直接返回true， 如果是数组且为空， 返回true， 如果是字符串， 且字符串为空，
    *          返回true， 如果是普通对象， 且该对象没有任何实例属性， 返回true
-   * @return { Boolean } 对象是否为空
    * @example
-   * ```javascript
-   *
-   * //output: true
-   * console.log( isEmptyObject( {} ) );
-   *
-   * //output: true
-   * console.log( isEmptyObject( [] ) );
-   *
-   * //output: true
-   * console.log( isEmptyObject( "" ) );
-   *
-   * //output: false
-   * console.log( isEmptyObject( { key: 1 } ) );
-   *
-   * //output: false
-   * console.log( isEmptyObject( [1] ) );
-   *
-   * //output: false
-   * console.log( isEmptyObject( "1" ) );
-   *
-   * ```
+   * console.log( isEmptyObject( {} ) ) // true
+   * console.log( isEmptyObject( [] ) ) // true
+   * console.log( isEmptyObject( "" ) ) // true
+   * console.log( isEmptyObject( { key: 1 } ) ) // false
+   * console.log( isEmptyObject( [1] ) ) // false
+   * console.log( isEmptyObject( "1" ) ) // false
    */
   isEmptyObject (obj) {
     if (obj == null) return true
-    if (this.isArray(obj) || this.isString(obj)) return obj.length === 0
+    if (this.toType(obj) === 'array' || this.toType(obj) === 'string') return obj.length === 0
     for (var key in obj) if (obj.hasOwnProperty(key)) return false
     return true
   },
@@ -58,12 +41,9 @@ export default {
    * 自定义判断元素类型
    * @param {*} obj
    * @example
-   * ```javascript
-   * let arr = [1, 2, 3, 4]
-   *
-   * //output: 'array'
-   * console.log(toType(arr))
-   * ```
+   * toType([1, 2, 3, 4]) // 'array'
+   * toType('hello') // 'string'
+   * toType({a: 1}) // 'object'
    */
   toType (obj) {
     return Object.prototype.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
@@ -71,8 +51,8 @@ export default {
 
   /**
    * 判断某个字符串是否符合JSON格式（以{开头，而不是以[开头）
-   * @param {String} str
-   * @returns {Boolean} true表示符合JSON格式，false表示不符合JSON格式
+   * @param {string} str
+   * @returns {boolean} true表示符合JSON格式，false表示不符合JSON格式
    */
   isJSON (str) {
     if (typeof str === 'string') {
@@ -91,11 +71,37 @@ export default {
 
   /**
    * 判断对象是否为{}，也可以通过JSON.stringify(a) === '{}'来判断
-   * @param {object} obj
+   * @param {Object} obj
    */
   isEmptyObject1 (obj) {
     for (let i in obj) {
       return false
+    }
+    return true
+  },
+
+  /**
+   * 判断两个对象的值是否相同
+   * @param {object} a
+   * @param {object} b
+   * @example
+   * var a = {name: 1, son: {name: 'Jack'}}
+   * var b = {name: 1, son: {name: 'zzbx'}}
+   * isEqual(a, b) // false
+   */
+  isEqual (a, b) {
+    const aKeys = Object.keys(a)
+    const bKeys = Object.keys(b)
+    if (aKeys.length !== bKeys.length) {
+      return false
+    } else {
+      for (let i in a) {
+        if (typeof a[i] === 'object') {
+          return this.isEqual(a[i], b[i])
+        } else {
+          if (a[i] !== b[i]) return false
+        }
+      }
     }
     return true
   },

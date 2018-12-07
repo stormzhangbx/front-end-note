@@ -18,7 +18,7 @@
    this.$router.push('/detail/001')
    ```
    参数值会被设置到`this.$route.params.id`，这种方式最简单，但不适合传递多个参数
-   
+
 2. 通过params
    ```javascript
    // 路由配置
@@ -70,4 +70,9 @@
 对象<br/>动态路由|`<router-link :to="{path: '/detail/1'}"></router-link>`<br/>这种写法的前提是设置了命名路由，即有name属性,注意params的值是个对象|`this.$router.push({path: '/detail/1'})`
 对象<br/>含`params`|`<router-link :to="{name: 'detail', params: {age: 20}}"></router-link>`|`this.$router.push({name: 'detail', params: {age: 20}})`
 对象<br/>含`query`|`<router-link :to="{path: '/detail', query: {age: 20}}"></router-link>`|`this.$router.push({path: '/detail', query: {age: 20}})`
+
+## 3 keep-alive
+
+## 4 滚动行为
+
 

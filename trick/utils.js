@@ -1,12 +1,7 @@
 export default {
   /**
    * 序列化表单值，并拼接成ajax参数
-   * @param { String } select jq选择器，选择表单form
-   * @example
-   * ```javascript
-   * //output: 123.jpgs
-   * console.log("123.jpgs".replace(/\..{3}$/g,''))
-   * ```
+   * @param {string} select jq选择器，选择表单form
    */
   getParam (select) {
     var paramData = {token: token}                     //或var paramData = {token: token};
@@ -21,19 +16,16 @@ export default {
 
   /**
    * 高亮颜色
-   * @param { Boolean } 判断是否要高亮颜色
-   * @param { String } jq选择器
-   * @param { String } 类名
+   * @param {boolean} 判断是否要高亮颜色
+   * @param {string} jq选择器
+   * @param {string} 类名
    * @example
-   * ```javascript
-   * 获取用户未读消息数
    * $.post(_ctx + "/userMsg/getUnreadTotal", {}, function(ret) {
    *	 highlightColor(ret.data > 0, "#unReadTotal", "c-red");
   *	 if (ret && ret.code == 0) {
   *		 $("#unReadTotal").html(ret.data);
   *	 }
   * }, "json");
-  * ```
   */
   highlightColor (flag, ele, cla) {
     flag ? $(ele).addClass(cla) : $(ele).removeClass(cla)
@@ -43,10 +35,7 @@ export default {
   /**
    * 获取颜色值，16进制字符串
    * @example
-   * ```javascript
-   * //output: #cccccc
-   * getRandomColor()
-   * ```
+   * getRandomColor() // #cccccc
    */
   getRandomColor () {
     let rgb = []
@@ -61,10 +50,10 @@ export default {
   /**
    * 把rgb格式的颜色值转换成16进制格式
    * @method fixColor
-   * @param { String } rgb格式的颜色值
-   * @param { String }
+   * @param {string} rgb格式的颜色值
+   * @param {string}
    * @example
-   * rgb(255,255,255)  => "#ffffff"
+   * rgb(255,255,255) // "#ffffff"
    */
   fixColor (name, value) {
     if (/color/i.test(name) && /rgba?/.test(value)) {
@@ -83,8 +72,8 @@ export default {
 
   /**
    * 从已知对象数组中取出符合条件项所在的对象
-   * @param {Array} arr
-   * @param {String} param
+   * @param {array} arr
+   * @param {string} param
    * @returns {Object}
    */
   getItem (arr, param) {
@@ -108,7 +97,7 @@ export default {
 
   /**
    * 将json对象语法高亮的打印出来
-   * @param { Object } json 需要打印出来的js对象
+   * @param {Object} json 需要打印出来的js对象
    * pre .string { color: #885800; }
    * pre .number { color: blue; }
    * pre .boolean { color: magenta; }
@@ -139,23 +128,17 @@ export default {
   },
 
   /**
-   * 移除数组array中所有的元素item
+   * 移除数组array中所有的元素item,该方法的匹配过程使用的是恒等'==='
    * @method removeItem
    * @param { Array } array 要移除元素的目标数组
    * @param { * } item 将要被移除的元素
-   * @remind 该方法的匹配过程使用的是恒等“===”
    * @example
-   * ```javascript
-   * var arr = [ 4, 5, 7, 1, 3, 4, 6 ];
-   *
+   * let arr = [ 4, 5, 7, 1, 3, 4, 6 ];
    * removeItem( arr, 4 );
-   * //output: [ 5, 7, 1, 3, 6 ]
-   * console.log( arr );
-   *
-   * ```
+   * console.log( arr ) // [ 5, 7, 1, 3, 6 ]
    */
   removeItem (array, item) {
-    for (var i = 0, l = array.length; i < l; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (array[i] === item) {
         array.splice(i, 1)
         i--
@@ -169,20 +152,9 @@ export default {
    * @param { String } str 需要删除首尾空格的字符串
    * @return { String } 删除了首尾的空格后的字符串
    * @example
-   * ```javascript
-   *
    * var str = " UEdtior ";
-   *
-   * //output: 9
-   * console.log( str.length );
-   *
-   * //output: 7
-   * console.log( UE.utils.trim( " UEdtior " ).length );
-   *
-   * //output: 9
-   * console.log( str.length );
-   *
-   *  ```
+   * str.length // 9
+   * trim(str).length // 7
    */
   trim (str) {
     return str.replace(/(^[ \t\n\r]+)|([ \t\n\r]+$)/g, '')
