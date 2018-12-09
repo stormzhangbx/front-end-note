@@ -20,6 +20,8 @@ border,complete,height,hspace,lowsrc,name,src,vspace,width
 
 可以通过Image对象的complete 属性来检测图像是否加载完成（每个Image对象都有一个complete属性，当图像处于装载过程中时，该属性值false,当发生了onload、onerror、onabort（图片加载中断时触发）中任何一个事件后，则表示图像装载过程结束（不管成没成功），此时complete属性为true）
 
+需要注意的是：src 属性一定要写到 onload 的后面，否则程序在 IE 中会出错。
+
 ## 事件
 
 onabort,onerror,onkeydown,onkeypress,onkeyup,onload
@@ -38,7 +40,7 @@ var modeImgCache = (function () {
     imgs[i].onLoad = validateImages(i)
     imgs[i].src = './image/' + i + '.jpg' // 该js文件同级目录image下有0.jpg-12.jpg图片
   }
-  
+
   // 验证是否成功加载完成，如不成功则重新加载
   function validateImages(i) {
     if (!imgs[i].complete) { // complete为false肯定是没有加载成功，重新加载

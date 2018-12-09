@@ -19,7 +19,7 @@ npm i express http-proxy-middleware --save-dev
 
 ```
 js-demo
-|- node_modules
+|- /node_modules
 |- /src
   |- index.html
 |- config.js
@@ -63,7 +63,7 @@ app.listen(3002, () => console.log('http://localhost:3002/src/'))
 项目B，用express起一个服务，用于体用项目A所需的接口，运行`npm index.js`，即提供get接口`http://localhost:3000/api/test`
 ```
 express-test
-|- node_modules
+|- /node_modules
 |- index.js
 |- package.json
 |- package-lock.json
