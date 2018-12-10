@@ -1,10 +1,10 @@
 export default {
-  getType: object => {
+  getType (object) {
     return Object.prototype.toString
       .call(object)
       .match(/^\[object\s(.*)\]$/)[1]
   },
-  setItem: (key, value) => {
+  setItem (key, value) {
     if (
       storage.getType(value) === "Object" ||
       storage.getType(value) === "Array"
@@ -13,7 +13,7 @@ export default {
     }
     localStorage.setItem(key, value)
   },
-  getItem: (key, value) => {
+  getItem (key, value) {
     var value = localStorage.getItem(key)
     if (value === null) {
       // 如果不存在
@@ -27,10 +27,10 @@ export default {
     }
     return value
   },
-  removeItem: key => {
+  removeItem (key) {
     storage.getItem(key) && localStorage.removeItem(key)
   },
-  clear: () => {
+  clear () {
     localStorage.clear()
   }
 }
