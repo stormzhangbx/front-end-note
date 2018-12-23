@@ -133,11 +133,12 @@ export default {
    * formate(new Date('2018-11-20') - new Date('2018-11-23')) // '已超时72小时0分钟0秒'
    */
   formate (time) {
-    let hour =parseInt(time/1000/3600)
-    let min  = parseInt((time/1000 - hour * 3600)/60)
-    let sec = parseInt(time/1000 - hour * 3600 - min * 60)
+    time = time/1000 // 单位秒
+    let hour =parseInt(time/3600)
+    let min  = parseInt(time%3600/60)
+    let sec = parseInt(time%3600%60)
     if(time>0){
-      return   sec >=0 ? hour + '小时' + min + '分钟' + sec + '秒' :'已超时'
+      return   sec >= 0 ? hour + '小时' + min + '分钟' + sec + '秒' : '已超时'
     }else{
       return '已超时'+(-hour) + '小时'+(-min) + '分钟' + (-sec)+'秒'
     }
