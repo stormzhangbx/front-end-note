@@ -3,6 +3,7 @@
 
 - MDN[Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type)
 - [四种常见的 POST 提交数据方式](https://www.cnblogs.com/Zhaols/p/6274899.html)
+- [四种常见的 POST 提交数据方式](http://yijiebuyi.com/blog/b0b830b8119be778aa099ebb21333edc.html#)
 
 GET请求方式，参数是拼接在url后传递的，因此在请求中不需要设置`Content-Type`
 

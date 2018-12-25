@@ -128,6 +128,21 @@ export const sortDate = (dateArr) => {
  * 格式化一个毫秒
  * @param {*} time
  * @example
+ * console.log(new Date('2018-11-23') - new Date('2018-11-20')) // 259200000
+ * formate(new Date('2018-11-23') - new Date('2018-11-20')) // '72小时0分钟0秒'
+ */
+export const formate = (time) => {
+  time = time/1000 // 单位秒
+  let hour =parseInt(time/3600)
+  let min  = parseInt(time%3600/60)
+  let sec = parseInt(time%3600%60)
+  return  hour + '小时' + min + '分钟' + sec + '秒'
+}
+
+/**
+ * 格式化一个毫秒
+ * @param {*} time
+ * @example
  * console.log(new Date('2018-11-20') - new Date('2018-11-23')) // -259200000
  * formate(new Date('2018-11-20') - new Date('2018-11-23')) // '已超时72小时0分钟0秒'
  */

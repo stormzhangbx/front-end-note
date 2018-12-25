@@ -14,6 +14,7 @@ MDN 中(HTTP 响应代码)[https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Sta
 
 `400 Bad Request`
 `401 Unauthorized`
+`403 Forbidden` 服务器端配置了该请求ip禁止访问服务器
 `404 Not Found`
 `405 Method Not Allowed`
 `408 Request Timeout`
