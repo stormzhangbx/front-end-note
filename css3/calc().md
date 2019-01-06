@@ -126,6 +126,9 @@
 ![calc02](./image/calc02.png "图2")
 
 ## 6 注意
-在less,sass中使用时应注意，`div{width: calc(100% - 30px)}`会被解析成div{width: 70%}
+- 在less,sass中使用时应注意，`div{width: calc(100% - 30px)}`会被解析成div{width: 70%}
 解决办法：`div{width: calc(~"100% - 30px")}`
+
+- calc内可以不止有一次运算
+  `height: calc(100% - 180px - 41PX);`
 
