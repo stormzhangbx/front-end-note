@@ -50,7 +50,7 @@
    ```
    ```javascript
    // 编程式导航
-   this.$router.push({
+   this.$router.push({ // /detail?name=zbx&age=20
      path: '/detail',
      query: {
        name: 'zbx',
