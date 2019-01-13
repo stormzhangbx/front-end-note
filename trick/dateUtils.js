@@ -16,12 +16,16 @@ export const getDateList = (startDate, endDate) => {
 }
 
 /**
- * 格式化日期时间
- * @param {(string|number)} d 可转换为日期的参数,如1453094034000,'2018-11-13'
+ * 格式化日期时间,通过修改参数format,可以控制年月日时分秒之间的连接符
+ * @param {(string|number)} d 可转换为日期的参数,如1453094034000,'2018-11-13',或者是Date对象(如console.log(new Date()), 打印Fri Jan 11 2019 14:57:12 GMT+0800 (中国标准时间))
  * @param {*} format 希望返回的日期格式
+ * @example
+ * formatDate('1980-02-03 22:22:22', 'yyyy年MM月dd日') // 1980年02月03日
  */
 export const formatDate = (d, format = 'yyyy-MM-dd HH-mm-ss') => {
-  const date = new Date(d)
+  if (!d) return
+  if (/-/g.test(d)) date = new Date(d.replace(/-/g, '/')) // IOS/safari设备上，日期为字符串格式「yyyy-MM-dd hh:mm:ss」, 经过new Date(str)后会出现Nan，解决：将分隔符 "-" 转为 "/"
+  else date = new Date(d)
   const year = date.getFullYear()
   const month = date.getMonth() + 1 // 月份是从0开始的
   const day = date.getDate()
