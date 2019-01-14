@@ -15,3 +15,10 @@
 ## plugins
 
 在配置文件里配置插件时，可以使用 `plugins` 关键字来存放插件名字的列表。插件名称可以省略 `eslint-plugin-` 前缀。
+
+## eslint 注释
+有时候会不可避免的违反eslint规则，如果不想修改eslint配置文件，可以通过在文件中注释使错误或警告消失。
+单行注释所有规则
+```js
+alert('foo') // eslint-disable-line
+```
