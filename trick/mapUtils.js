@@ -232,7 +232,7 @@ export const forEach = (arr, fn) => {
 export const getUrlList = (targetArr) => {
   let arr = []
   targetArr.forEach(item => {
-      item.url && arr.push(item.url) // 此例子中要符合url为真值得条件
+      item.url && arr.push(item.url) // 此例子中要符合url为真值的条件
       if (item.childMenus && item.childMenus.length) {
         arr = arr.concat(getUrlList(item.childMenus))
       }
@@ -335,4 +335,4 @@ export const getUrlList = (targetArr) => {
 //     ]
 //   }
 // ]
-// console.log(getUrlList(test))
+// console.log(getUrlList(test)) // 获取各级菜单中的url
