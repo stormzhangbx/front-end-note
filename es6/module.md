@@ -9,7 +9,7 @@
 ### 1.1 export、export default用法
 ```js
 // 模块中可以有多个export, 但最多只能有一个export default
-export const name = 'Jack' // export用法1，直接输出接口-，export后直接跟变量声明语句
+export const name = 'Jack' // export用法1，直接输出接口，export后直接跟变量声明语句
 export const run = () => {
   console.log('I can run')
 }
@@ -56,28 +56,31 @@ import { default as foo } from 'modules' // 等同于 import foo from 'modules'
 
 ### 1.2 注意
 - **`export default`后面不能跟变量声明语句**
-- `export default`既可用于匿名函数，也可用于非匿名函数
+- `export default`既可用于匿名函数，也可用于非匿名函数，如
+  ```js
+  export default function printMe() {
+    console.log('I get called from print.js!');
+  }
+  ```
+  ```js
+  export defualt function () {
+     console.log('Jack')
+  }
+  ```
+  ```js
+  function foo () {
+     console.log('Jack')
+  }
+  export defualt foo
+  ```
 - `export`命令可以出现在模块的任何位置，只要处于模块顶层就可以。如果处于块级作用域内，就会报错，import命令也是如此
-
-```js
-export defualt function () {
-   console.log('Jack')
-}
-```
-
-```js
-function foo () {
-   console.log('Jack')
-}
-export defualt foo
-```
 
 ## 2 输入
 > 通过`import`输入其他模块对外的接口
 
 ### 2.1 用法
 
-- 输入通过`export`输出的接口，如下，其中`export1`，`export2`，`export3`必须与模块module.js中响应的变量名（别名）一样，即需要知道所要加载的变量名或函数名，否则无法加载
+- 输入通过`export`输出的接口，如下，其中`export1`，`export2`，`export3`必须与模块module.js中对应的变量名（别名）一样，**即需要知道所要加载的变量名或函数名，否则无法加载**
   `import { export1, export2, export3 } from './module.js'`
   **或者整体加载**
   `import * as util from './module.js'`
