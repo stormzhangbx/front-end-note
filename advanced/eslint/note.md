@@ -18,7 +18,27 @@
 
 ## eslint 注释
 有时候会不可避免的违反eslint规则，如果不想修改eslint配置文件，可以通过在文件中注释使错误或警告消失。
-单行注释所有规则
+### 特定行
 ```js
-alert('foo') // eslint-disable-line
+// 在某一特定的行上禁用所有规则
+alert('foo') /* eslint-disable-line */
+```
+
+```js
+// 在某一特定的行上禁用某个指定的规则
+alert('foo') /* eslint-disable-line no-alert */
+```
+
+### 整个文件或一块代码
+`/* eslint-disable */`之后的代码将禁用eslint规则或者某些eslint规则
+```js
+// 在整个文件或一块代码范围内禁止规则出现警告
+/* eslint-disable */
+alert('foo')
+```
+
+```js
+// 在整个文件或一块代码范围内禁用某个指定的规则
+/* eslint-disable no-alert */
+alert('foo')
 ```
