@@ -75,4 +75,22 @@
 
 ## 4 滚动行为
 
+## 5 vue单页面应用打开新窗口显示跳转页面的方法
+
+一般单页面应用，例如vue都是通过vue-router来做跳转，不会像多页应用一样另起新页面显示，但是也不排除一些业务上的需要，现在的需求是另外开启一个新页面来显示跳转到的页面，原本的窗口保持页面不变
+
+声明式导航：
+```html
+<router-link tag="a" target="_blank" to="/detail">
+```
+
+编程式导航：
+```js
+const { href } = this.$router.resolve('/detail')
+window.open(href, '_blank')
+// 或者window.open(href, '_blank', 'toolbar=yes, width=1300, height=900')
+```
+
+
+
 
