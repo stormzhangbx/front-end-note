@@ -91,6 +91,10 @@ window.open(href, '_blank')
 // 或者window.open(href, '_blank', 'toolbar=yes, width=1300, height=900')
 ```
 
+## 6 路由守卫
+
+路由守卫的类型有多种，使用路由守卫的地方都别忘了调用`next()`
+
 
 
 
