@@ -8,7 +8,7 @@ for(为循环做的准备工作; 循环可以执行的条件; 代码主体执行
 
 ```js
 var sum=0;
-var array=[1,2,3,4,5,6,7,8,9]
+var array=[1, 2, 3, 4, 5, 6, 7, 8, 9]
 for(var i = 0, len = array.length; i < len; i++) {
   sum += array[i]
 }
