@@ -6,8 +6,8 @@ export default {
   },
   setItem (key, value) {
     if (
-      storage.getType(value) === "Object" ||
-      storage.getType(value) === "Array"
+      this.getType(value) === "Object" ||
+      this.getType(value) === "Array"
     ) {
       value = JSON.stringify(value)
     }
@@ -28,7 +28,7 @@ export default {
     return value
   },
   removeItem (key) {
-    storage.getItem(key) && localStorage.removeItem(key)
+    this.getItem(key) && localStorage.removeItem(key)
   },
   clear () {
     localStorage.clear()
