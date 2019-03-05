@@ -191,3 +191,22 @@ export const getCurMonthLast = () => {
   const oneDay = 24 * 60 * 60 * 1000
   return new Date(nextMonthFirstDay - oneDay)
 }
+
+/**
+ * 获取当前时间前后N天前后日期的方法
+ * @param {number} AddDayCount
+ * @example
+ * console.log("一月前："+GetDateStr(-30));
+ * console.log("昨天："+GetDateStr(-1));
+ * console.log("今天："+GetDateStr(0));
+ * console.log("明天："+GetDateStr(1));
+ * console.log("后天："+GetDateStr(2));
+ */
+export const GetDateStr = (AddDayCount) => {
+  var dd = new Date();
+  dd.setDate(dd.getDate() + AddDayCount); // 获取AddDayCount天后的日期
+  var y = dd.getFullYear();
+  var m = (dd.getMonth() + 1) < 10 ? "0" + (dd.getMonth() + 1):(dd.getMonth() + 1); // 获取当前月份的日期，不足10补0
+  var d = dd.getDate()<10 ? "0"+dd.getDate() : dd.getDate(); // 获取当前几号，不足10补0
+  return y + "-" + m+ "-" + d;
+}
