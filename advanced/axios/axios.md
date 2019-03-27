@@ -41,3 +41,4 @@ get请求通过`params`来传参
 - axios get和post请求等请求方式的传参形式不同，封装可以统一传参形式
 - **如果请求发生错误（有两类错误：1 http状态码status非2xx类错误；2 http状态码status为2xx，但是返回数据code不是success或者00之类标识）**
 - 请求成功时，结果response是一个对象，属性包含config、data等，而主要使用的时其中的data，封装可以减少重复操作
+
