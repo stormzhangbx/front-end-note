@@ -12,7 +12,7 @@ Git主分支的名字，默认叫做`master`。它是自动建立的，版本库
 
 日常开发应该在另一条分支上完成，我们把开发用的分支，叫做`dev-*`。
 
-```shell
+```bash
 # 创建dev-20190331分支
 git checkout -b dev-20190331 master
 ```
@@ -21,10 +21,12 @@ git checkout -b dev-20190331 master
 
 当`dev-*`分支上的功能任务开发完，需要测试人员测试时，此时从`dev-*`上新建对应`release-*`分支，用于构建测试环境使用的git分支，通过测试后，将`release-*`分支合并到`master`分支。
 
-```shell
+```bash
 #创建release-20190331分支
 git checkout -b release-21090331 dev-20190331
+```
 
+```bash
 # 切换到master分支
 git checkout master
 
@@ -46,5 +48,6 @@ git merge --no-ff release-20190331
 
 2 随着项目不断的开发，`dev-*`和`release-*`分支会越来越多，应该定期清理（注意，在删除分支之前应该确保该分支作用已经完成）
 
-3 开发某种特定功能、新需求、优化，分支方向是`master` → `dev-*` → `release-*`
+3 开发某种特定功能、新需求、优化，分支方向是：
+![git流程图](../image/gitFlow02.jpg "图2")
 
