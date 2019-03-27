@@ -12,10 +12,25 @@ Git主分支的名字，默认叫做`master`。它是自动建立的，版本库
 
 日常开发应该在另一条分支上完成，我们把开发用的分支，叫做`dev-*`。
 
+```shell
+# 创建dev-20190331分支
+git checkout -b dev-20190331 master
+```
+
 ## 三、预发布分支release-*
 
 当`dev-*`分支上的功能任务开发完，需要测试人员测试时，此时从`dev-*`上新建对应`release-*`分支，用于构建测试环境使用的git分支，通过测试后，将`release-*`分支合并到`master`分支。
 
+```shell
+#创建release-20190331分支
+git checkout -b release-21090331 dev-20190331
+
+# 切换到master分支
+git checkout master
+
+# 对release-20190331分支进行合并
+git merge --no-ff release-20190331
+```
 
 ## 四、重点
 
