@@ -337,4 +337,97 @@ export const getUrlList = (targetArr) => {
 // ]
 // console.log(getUrlList(test)) // 获取各级菜单中的url
 
+/**
+ * 对象数组去重
+ * @param {array} array 对象数组
+ */
+export const removeDuplicate = (array) => {
+  let result = []
+  let obj = {}
+  array.forEach(item => {
+      if (!obj[item.key]) {
+        result.push(item)
+        obj[item.key] = true
+      }
+  })
+  return result
+}
+export const removeDuplicate1 = (array) => {
+  let obj = {}
+  return array.reduce((newArr, item) => {
+    if (!obj[item.key]) {
+      newArr.push(item)
+      obj[item.key] = true
+    }
+    return newArr
+  }, [])
+}
+// var arr = [
+//   { key: '01', value: '乐乐' },
+//   { key: '02', value: '博博' },
+//   { key: '03', value: '淘淘' },
+//   { key: '04', value: '哈哈' },
+//   { key: '01', value: '乐乐' }
+// ]
+// console.log(removeDuplicate(arr))
+// console.log(removeDuplicate1(arr))
 
+/**
+ * 合并（相加）对象数组中同一类型的项
+ * @param {array} array
+ */
+export const getTotalList = (array) => {
+  let result = []
+  let obj = {}
+  array.forEach(item => {
+      if (!obj[item.accountId]) {
+        result.push(item)
+        obj[item.accountId] = true
+      } else {
+        result.forEach(rItem => {
+          if (rItem.accountId === item.accountId) {
+            rItem.amount = Number(rItem.amount) + Number(item.amount) // 原数组中的amount是字符串，直接相加是字符串拼接
+          }
+        })
+      }
+  })
+  return result // 可以通过数组map方法处理后再返回想要的数据结构
+}
+// costItem 费用项目，amount金额，accountId所属账号
+// var arr = [
+//   { costItem: '护理费', amount: '90', accountId: 1 },
+//   { costItem: '床位费', amount: '100', accountId: 1 },
+//   { costItem: '餐饮费', amount: '80', accountId: 2 },
+//   { costItem: '电费', amount: '70', accountId: 3 },
+//   { costItem: '水费', amount: '80', accountId: 3 },
+// ]
+// console.log(getTotalList(arr))
+
+/**
+ * 对象数组批量删除
+ * @param {*} source 源数组
+ * @param {*} deleteList 要删除的项组成的数组
+ */
+export const batchDelete = (source, deleteList) => {
+  for (let i = 0; i < source.length; i++) {
+    for (let j = 0; j < deleteList.length; j++) {
+      if (source[i]['id'] === deleteList[j]['id']) {
+        source.splice(i, 1)
+        i--
+      }
+    }
+  }
+}
+// var arr = [
+//   { id: 1, key: '01', value: '乐乐' },
+//   { id: 2, key: '02', value: '博博' },
+//   { id: 3, key: '03', value: '淘淘' },
+//   { id: 4, key: '04', value: '哈哈' },
+//   { id: 5, key: '01', value: '乐乐' }
+// ]
+// var deleteList = [
+//   { id: 3, key: '03', value: '淘淘' },
+//   { id: 4, key: '04', value: '哈哈' },
+// ]
+// batchDelete(arr, deleteList)
+// console.log(arr)
