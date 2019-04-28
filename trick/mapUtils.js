@@ -374,7 +374,7 @@ export const removeDuplicate1 = (array) => {
 
 /**
  * 合并（相加）对象数组中同一类型的项
- * @param {array} array 
+ * @param {array} array
  */
 export const getTotalList = (array) => {
   let result = []
