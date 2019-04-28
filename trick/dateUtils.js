@@ -194,7 +194,7 @@ export const getCurMonthLast = () => {
 
 /**
  * 获取当前时间前后N天前后日期的方法
- * @param {number} AddDayCount
+ * @param {number} addDayCount
  * @example
  * console.log("一月前："+GetDateStr(-30));
  * console.log("昨天："+GetDateStr(-1));
@@ -202,11 +202,42 @@ export const getCurMonthLast = () => {
  * console.log("明天："+GetDateStr(1));
  * console.log("后天："+GetDateStr(2));
  */
-export const GetDateStr = (AddDayCount) => {
+export const getDateStr = (addDayCount) => {
   var dd = new Date();
-  dd.setDate(dd.getDate() + AddDayCount); // 获取AddDayCount天后的日期
+  dd.setDate(dd.getDate() + addDayCount); // 获取addDayCount天后的日期
   var y = dd.getFullYear();
   var m = (dd.getMonth() + 1) < 10 ? "0" + (dd.getMonth() + 1):(dd.getMonth() + 1); // 获取当前月份的日期，不足10补0
   var d = dd.getDate()<10 ? "0"+dd.getDate() : dd.getDate(); // 获取当前几号，不足10补0
   return y + "-" + m+ "-" + d;
+}
+
+/**
+ * 获取当前时间前后N天前后日期的方法
+ * @param {number} dayCount 整数，负数表示当前时间之前的日期
+ */
+export const getDateStr1 = (dayCount) => {
+  var dd = new Date()
+  dd = new Date(dd.getTime() + dayCount * 8.64e7)
+  return formatDate(dd)
+}
+
+/**
+ * 相对日
+ * @param {*} d 日期
+ * @param {*} monthCount 几个月后的相对日
+ */
+export const getRelateDate = (d, monthCount) => {
+  var d = new Date(d)
+  d.setMonth(d.getMonth() + 1)
+  d.setDate(d.getDate() - 1)
+  var yy1 = d.getFullYear()
+  var mm1 = d.getMonth()+1 //因为getMonth（）返回值是 0（一月） 到 11（十二月） 之间的一个整数。所以要给其加1
+  var dd1 = d.getDate()
+  if (mm1 < 10 ) {
+      mm1 = '0' + mm1
+  }
+  if (dd1 < 10) {
+    dd1 = '0' + dd1
+  }
+  return yy1 + '-' + mm1 + '-' + dd1
 }
