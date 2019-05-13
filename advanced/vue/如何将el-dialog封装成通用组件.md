@@ -87,3 +87,15 @@ export default {
 }
 </script>
 ```
+
+`<upload-dialog :isShow="isVisible" @update:isShow="val => isVisible = val"/>`用父组件data `isVisible`给子组件props `isShow`赋值，并在父组件监听子组件传过来的自定义事件，该自定义事件会抛出一个值，在父组件接收该值，并在父组件赋值给data `isVisible`
+
+这样就不会违反单向数据流 [单向数据流](https://cn.vuejs.org/v2/guide/components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81)
+
+`.sync` 修饰符用于父组件，是上述写法的语法糖，
+即将`:isShow="isVisible" @update:isShow="val => isVisible = val"`
+简化为`:isShow="isVisible"`
+
+![sync01](./image/sync01.png)
+
+[.sync 修饰符](https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
