@@ -3,9 +3,11 @@
 > 将自己封装好的代码、方法发布到npm上供他人和自己使用，这样可以避免重复造轮子，提高开发效率，因此要熟练使用node的module（模块）
 
 ## 步骤
+
 1 前置条件，安装node环境，注册npm账号
 
 2 新建一个文件夹npm-demo，进入后执行npm init，接下来是一长串表单
+
 - name: 填写你这个包的名字，默认是你这个文件夹的名字。不过这里要着重说一下，最好先去npm上找一下有没有同名的包，否则发布是会因为同名而报错。这里包名叫npm-demo-zbx，初始化完成后也可以直接修改package.json文件
 - version: 这个包的版本，默认1.0.0
 - description: 描述包时干嘛的，如"my first npm package, just for test"
@@ -19,6 +21,7 @@
 初始化完成后也可以直接修改package.json文件
 
 3 然后再根目录下新建index.js
+
 ```js
 // index.js
 module.exports = '123456'

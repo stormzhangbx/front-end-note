@@ -1,6 +1,6 @@
 # http 状态码
 
-MDN 中(HTTP 响应代码)[https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status]
+MDN 中[HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
 
 响应分为 5 类: 信息响应，成功响应，重定向，客户端错误和服务器错误。
 

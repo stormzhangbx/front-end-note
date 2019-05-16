@@ -3,6 +3,7 @@
 - MDN[典型的 HTTP 会话](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Session)
 
 ## 请求组成
+
 ```
 <method> <request-url> <version>
 <headers>
@@ -15,6 +16,7 @@
 - 最后一块是可选数据块，包含更多数据，主要被 POST 方法所使用。
 
 如：
+
 ```
 GET / HTTP/1.1
 Host: developer.mozilla.org
@@ -30,6 +32,7 @@ Content-Type: application/x-www-form-urlencoded
 
 name=Joe%20User&request=Send%20me%20one%20of%20your%20catalogue
 ```
+
 协议规定 POST 提交的数据必须放在消息主体（entity-body）中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。
 
 ## 响应组成
@@ -39,6 +42,7 @@ name=Joe%20User&request=Send%20me%20one%20of%20your%20catalogue
 - 最后一块是数据块，包含了响应的数据 （如果有的话）
 
 如：
+
 ```
 HTTP/1.1 200 OK
 Date: Sat, 09 Oct 2010 14:28:02 GMT
@@ -51,7 +55,3 @@ Content-Type: text/html
 
 <!DOCTYPE html... (这里是 29769 字节的网页HTML源代码)
 ```
-
-
-
-

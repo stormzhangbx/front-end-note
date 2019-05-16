@@ -32,4 +32,5 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]
 @="\"D:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" \"%V\""
 ```
+
 注意其中`D:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe`因人而异，为vs code安装目录下的Code.exe文件路径。编辑完后保存，然后双击`vsCodeOpenFolder.reg`文件，一路确定即可。

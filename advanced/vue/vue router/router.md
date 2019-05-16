@@ -5,6 +5,7 @@
 路由常用于“页面”间跳转，跳转时常常需要携带一些参数，可以通过以下几种方式：
 
 1. 通过动态路由
+
    ```javascript
    // 路由配置
    {
@@ -17,9 +18,10 @@
    // 编程式导航
    this.$router.push('/detail/001')
    ```
-   参数值会被设置到`this.$route.params.id`，这种方式最简单，但不适合传递多个参数
 
+  参数值会被设置到`this.$route.params.id`，这种方式最简单，但不适合传递多个参数
 2. 通过params
+
    ```javascript
    // 路由配置
    {
@@ -28,6 +30,7 @@
      component: detail
    }
    ```
+
    ```javascript
    // 编程式导航
    this.$router.push({
@@ -38,9 +41,10 @@
     }
    })
    ```
-   参数值会被设置到`this.$route.params.name`
 
+   参数值会被设置到`this.$route.params.name`
 3. 通过query
+
    ```javascript
    // 路由配置
    {
@@ -48,6 +52,7 @@
      component: detail
    }
    ```
+
    ```javascript
    // 编程式导航
    this.$router.push({ // /detail?name=zbx&age=20
@@ -58,11 +63,13 @@
      }
    })
    ```
+
    参数值会被设置到`this.$route.query.name`
 
 总结，query要用path来引入，params要用name来引入，接收参数都是类似的，分别是`this.$route.query.name`和`this.$route.params.name`。
 
 ## 2 声明式导航、编程式导航
+
 ||声明式|编程式
 :--:|:--|:--
 字符串|`<router-link to="/detail"></router-link>`<br>`<router-link :to="'/detail'"></router-link>`|`this.$router.push('/detail')`
@@ -80,11 +87,13 @@
 一般单页面应用，例如vue都是通过vue-router来做跳转，不会像多页应用一样另起新页面显示，但是也不排除一些业务上的需要，现在的需求是另外开启一个新页面来显示跳转到的页面，原本的窗口保持页面不变
 
 声明式导航：
+
 ```html
 <router-link tag="a" target="_blank" to="/detail">
 ```
 
 编程式导航：
+
 ```js
 const { href } = this.$router.resolve('/detail')
 window.open(href, '_blank')
@@ -94,7 +103,3 @@ window.open(href, '_blank')
 ## 6 路由守卫
 
 路由守卫的类型有多种，使用路由守卫的地方都别忘了调用`next()`
-
-
-
-

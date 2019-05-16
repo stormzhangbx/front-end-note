@@ -8,20 +8,26 @@
 GET请求方式，参数是拼接在url后传递的，因此在请求中不需要设置`Content-Type`
 
 ## 作用
+
 - 在请求中 (如POST 或 PUT)，客户端告诉服务器实际发送的数据类型（编码格式）。
 - 在响应中，Content-Type标头告诉客户端实际返回的内容的内容类型。
 
 ## 语法
-`Content-Type`的值可以由三部分通过`; `连接组成:
+
+`Content-Type`的值可以由三部分通过`;`连接组成:
+
 - media-type 资源或数据的 MIME type
 - charset 字符编码标准
 - boundary 对于多部分实体，boundary 是必需的，其包括来自一组字符的1到70个字符，已知通过电子邮件网关是非常健壮的，而不是以空白结尾。它用于封装消息的多个部分的边界。
 如：
-```
+
+```http
 Content-type: text/html;chartset=UTF-8
 Content-type: multipart/form-data;boundary=something
 ```
+
 XMLHttpRequest对象设置请求头 xhr.setRequestHeader('Content-type', 'xxx')，此方法必须在open()方法和send()之间调用（否则会报错），如
+
 ```js
 var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP")
 xhr.onreadystatechange = function () {
@@ -37,6 +43,7 @@ xhr.send('userName=zbx')
 ```
 
 axios 设置请求配置中的headers，如
+
 ```js
 axios.request({
   method: 'post',

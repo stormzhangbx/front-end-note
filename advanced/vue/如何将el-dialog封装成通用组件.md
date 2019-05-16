@@ -3,6 +3,7 @@
 如果项目中某一对话框在多个页面或者一个页面中多处使用，可以考虑将其封装成通用组件。
 
 通用组件：
+
 ```html
 <-- hello.vue-->
 <template>
@@ -50,6 +51,7 @@ export default {
 ```
 
 使用：
+
 ```html
 <!-- form -->
 <template>

@@ -15,6 +15,7 @@ for(var i = 0, len = array.length; i < len; i++) {
 console.log(i) // 9
 console.log(len) // 9
 ```
+
 for循环语句的执行顺序简单介绍，图示如下：
 ![图一](./image/01for.jpg)
 
@@ -27,6 +28,7 @@ for循环语句的执行顺序简单介绍，图示如下：
 （5）.上面结束了一次完整的循环，这时候再来判断循环执行的条件是否成立，再执行代码主体，然后再执行代码主体执行后做的工作，如此往复下去，再强调一遍，准备工作只需要做一次即可。
 
 for知识点补充：
+
 ```js
 for (var i = 0; i < 9; i++) {
   console.log('hello')

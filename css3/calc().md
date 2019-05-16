@@ -1,6 +1,7 @@
 # calc()
 
 目录
+
 - [1 简介](#1-简介)
 - [2 用法](#2-用法)
 - [3 运算规则](#3-运算规则)
@@ -33,12 +34,12 @@
 
 ```css
 .elm {
-	/*Firefox*/
-	-moz-calc(expression);
-	/*chrome safari*/
-	-webkit-calc(expression);
-	/*Standard */
-	calc();
+  /* Firefox */
+  -moz-calc(expression);
+  /* chrome safari */
+  -webkit-calc(expression);
+  /* Standard */
+  calc();
  }
 ```
 
@@ -84,11 +85,13 @@
 </body>
 </html>
 ```
+
 ![calc01](./image/calc01.png "图1")
 
 水平垂直居中
 
 响应式
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -126,9 +129,9 @@
 ![calc02](./image/calc02.png "图2")
 
 ## 6 注意
+
 - 在less,sass中使用时应注意，`div{width: calc(100% - 30px)}`会被解析成div{width: 70%}
 解决办法：`div{width: calc(~"100% - 30px")}`
 
 - calc内可以不止有一次运算
   `height: calc(100% - 180px - 41PX);`
-

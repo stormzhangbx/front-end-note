@@ -6,6 +6,7 @@
 Image()函数将会创建一个新的`HTMLImageElement`实例。它的功能等价于`document.createElement('img')`
 
 ## 语法
+
 `new Image(width, height)`，`width`表示图片的宽度 (即 width 属性)，`height`表示图片的高度 (即 height 属性)。
 
 上面的`width`、`height`注意区别`naturalWidth`、`naturalHeight`，`width`、`height`是值图片显示的宽高，而`naturalWidth`、`naturalHeight`是指图片实际的像素大小
@@ -29,6 +30,7 @@ onabort,onerror,onkeydown,onkeypress,onkeyup,onload
 其中最有用的一个肯定是 onLoad事件，它在图像完全载入之后调用。这个事件处理器可以与一个自定义函数联系起来，以在图像完全载入之后执行一些特定的任务。src 属性一定要写到 onload 的后面，否则程序在 IE 中会出错。
 
 图片预加载
+
 ```js
 var modeImgCache = (function () {
   var count = 12
@@ -67,4 +69,3 @@ var modeImgCache = (function () {
 })()
 console.log(modeImgCache)
 ```
-
