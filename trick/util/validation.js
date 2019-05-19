@@ -77,7 +77,7 @@ let validation = {
     //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
     if (!reg.test(idNo)) return false
     // 地区验证
-    if (!area[idNo.substr(0, 2)]) return false
+    if (!area[idNo.substring(0, 2)]) return false
     // 出生日期验证
     switch (idNo.length) {
       case 15:
