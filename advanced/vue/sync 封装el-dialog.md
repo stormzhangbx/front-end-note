@@ -1,4 +1,4 @@
-# 如何将el-dialog封装成通用组件
+# sync 封装el-dialog
 
 如果项目中某一对话框在多个页面或者一个页面中多处使用，可以考虑将其封装成通用组件。
 
@@ -15,6 +15,7 @@
     <span slot="footer">
       <el-button @click="cancelFunc">取 消</el-button>
       <el-button type="primary" @click="confirmFunc">确 定</el-button>
+
     </span>
   </el-dialog>
 </template>
@@ -90,7 +91,7 @@ export default {
 </script>
 ```
 
-`<upload-dialog :isShow="isVisible" @update:isShow="val => isVisible = val"/>`用父组件data `isVisible`给子组件props `isShow`赋值，并在父组件监听子组件传过来的自定义事件，该自定义事件会抛出一个值，在父组件接收该值，并在父组件赋值给data `isVisible`
+`<upload-dialog :isShow="isVisible" @update:isShow="val => isVisible = val"/>`用父组件data属性 `isVisible` 给子组件props属性 `isShow` 赋值，并在父组件监听子组件传过来的自定义事件，该自定义事件会抛出一个值，在父组件接收该值，并在父组件赋值给data属性 `isVisible`
 
 这样就不会违反单向数据流 [单向数据流](https://cn.vuejs.org/v2/guide/components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81)
 

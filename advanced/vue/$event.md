@@ -1,0 +1,64 @@
+# $event
+
+
+## 1 原生dom事件
+
+对于原生dom事件，$event表示的是一个事件对象
+
+- 不使用大括号，$event被自动当作实参传入
+
+```html
+<template>
+  <div>
+    <div @click="clickFunc">hello</div>
+    <!-- 这里没有大括号，相当于 -->
+    <!-- <div @click="clickFunc($event)"></div> -->
+    <!-- 当事件逻辑较少时可以直接写在模板上 -->
+    <div @click="$event.target.innerHTML = 'world'">hello</div>
+  </div>
+</template>
+
+<script>
+  export default {
+    methods: {
+      clickFunc (e) { // 这里是定义事件回调函数，如果定义了参数（1个参数、2个参数或者多个参数），那么事件触发时就得传入相应参数数据
+        console.log(e) // 打印出div元素上的一个click事件对象
+      }
+    }
+  }
+</script>
+```
+
+- 使用圆括号，必须显式的传入 `$event` 对象，如果不传入可能最终找到的是全局的window.event
+
+```html
+<template>
+  <div>
+    <div @click="clickFunc('hello', $event)"></div>
+  </div>
+</template>
+
+<script>
+  export default {
+    methods: {
+      clickFunc (p, e) {
+        console.log(e)
+      }
+    }
+  }
+</script>
+```
+
+## 2 自定义事件
+
+对于自定义事件，$event表示的是自定义事件参数
+
+```html
+<template>
+  <div class="p20">
+    <upload-dialog
+      :isShow="isVisible"
+      @update:isShow="isVisible = $event"/>
+  </div>
+</template>
+```

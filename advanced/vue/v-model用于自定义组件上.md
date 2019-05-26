@@ -51,6 +51,8 @@ export default {
 <template>
   <div class="p20">
     <my-component v-model="title"/>
+    <!-- 相当于 -->
+    <!-- <my-component :value="title" @input="title = $event"/> -->
   </div>
 </template>
 
