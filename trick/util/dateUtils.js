@@ -1,5 +1,5 @@
 /**
- * 获取两个日期之间的日期
+ * 获取两个日期之间的日期（包头包尾）
  * @param {Object} startDate 日期对象,开始时间
  * @param {Object} endDate 日期对象,结束时间
  * @example
@@ -22,41 +22,23 @@ export const getDateList = (startDate, endDate) => {
  * @example
  * formatDate('1980-02-03 22:22:22', 'yyyy年MM月dd日') // 1980年02月03日
  */
-export const formatDate = (d, format = 'yyyy-MM-dd HH-mm-ss') => {
+export const formatDate = (d, format = 'yyyy-MM-dd hh:mm:ss') => {
   if (!d) return
-  if (/-/g.test(d)) date = new Date(d.replace(/-/g, '/')) // IOS/safari设备上，日期为字符串格式「yyyy-MM-dd hh:mm:ss」, 经过new Date(str)后会出现Nan，解决：将分隔符 "-" 转为 "/"
-  else date = new Date(d)
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1 // 月份是从0开始的
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+  d = /-/g.test(d) ? new Date(d.replace(/-/g, '/')) : d = new Date(d)
+  const year = d.getFullYear()
+  const month = d.getMonth() + 1 // 月份是从0开始的
+  const day = d.getDate()
+  const hour = d.getHours()
+  const minute = d.getMinutes()
+  const second = d.getSeconds()
   const arr = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09']
   const result = format.replace(/yyyy/, year)
     .replace(/MM/, arr[month] || month)
     .replace(/dd/, arr[day] || day)
-    .replace(/HH/, arr[hour] || hour)
+    .replace(/hh/, arr[hour] || hour)
     .replace(/mm/, arr[minute] || minute)
     .replace(/ss/, arr[second] || second)
   return result
-}
-
-/**
- * 将时间戳转化为日期(时间)
- * @param { Number } timeStamp 需要转换的事件戳
- * @param { String } seperator 分隔符
- */
-export const stamp2date = (timeStamp, seperator='/') => {
-  const oDate =  new Date(timeStamp)
-  const year = oDate.getFullYear()
-  const month = (oDate.getMonth() + 1) < 10 ? '0' + (oDate.getMonth() + 1) : (oDate.getMonth() + 1)
-  const date = oDate.getDate() < 10 ? '0' + oDate.getDate() : oDate.getDate()
-  const hourse = oDate.getHours() < 10 ? '0' + oDate.getHours() : oDate.getHours()
-  const minute = oDate.getMinutes() < 10 ? '0' + oDate.getMinutes() : oDate.getMinutes()
-  const second = oDate.getSeconds() < 10 ? '0' + oDate.getSeconds() : oDate.getSeconds()
-  const d = `${year}${seperator}${month}${seperator}${date} ${hourse}${seperator}${minute}${seperator}${second}`
-  return d
 }
 
 /**
@@ -65,41 +47,36 @@ export const stamp2date = (timeStamp, seperator='/') => {
  */
 export const getAge = (strBirthday) => {
   var returnAge
-  var strBirthdayArr=strBirthday.split('-')
+  var strBirthdayArr = strBirthday.split('-')
   var birthYear = strBirthdayArr[0]
   var birthMonth = strBirthdayArr[1]
   var birthDay = strBirthdayArr[2]
 
-  d = new Date()
+  var d = new Date()
   var nowYear = d.getFullYear()
   var nowMonth = d.getMonth() + 1
   var nowDay = d.getDate()
 
-  if (nowYear == birthYear) {
-    returnAge = 0 //同年 则为0岁
-  } else {
-    var ageDiff = nowYear - birthYear //年之差
-    if (ageDiff > 0) {
-      if (nowMonth == birthMonth) {
-        var dayDiff = nowDay - birthDay //日之差
-        if(dayDiff < 0) {
-          returnAge = ageDiff - 1
-        } else {
-          returnAge = ageDiff
-        }
+  if (nowYear === birthYear) {
+    returnAge = 0 // 同年 则为0岁
+  } else if (nowYear > birthYear) {
+    var ageDiff = nowYear - birthYear // 年之差
+    if (nowMonth === birthMonth) {
+      var dayDiff = nowDay - birthDay // 日之差
+      if (dayDiff < 0) {
+        returnAge = ageDiff - 1
       } else {
-        var monthDiff = nowMonth - birthMonth //月之差
-        if(monthDiff < 0) {
-          returnAge = ageDiff - 1
-        } else {
-          returnAge = ageDiff
-        }
+        returnAge = ageDiff
       }
+    } else if (nowMonth < birthMonth) {
+      returnAge = ageDiff - 1
     } else {
-      returnAge = -1 //返回-1 表示出生日期输入错误 晚于今天
+      returnAge = ageDiff
     }
+  } else {
+    returnAge = -1 // 返回-1 表示出生日期输入错误 晚于今天
   }
-  return returnAge //返回周岁年龄
+  return returnAge // 返回周岁年龄
 }
 
 /**
@@ -108,13 +85,13 @@ export const getAge = (strBirthday) => {
  */
 export const getBirAndSex = (idCard) => {
   let birthday = ''
-  let sex = 0 // 0表示女,1表示男
+  let sex = ''
   if (idCard.length === 18) {
-    birthday = `${idCard.substring(6, 10)}-${idCard.substring(11, 12)}-${idCard.substring(13, 14)}`
-    sex=(idCard[16] % 2 === 0) ? 0 : 1
+    birthday = `${idCard.substring(6, 10)}-${idCard.substring(10, 12)}-${idCard.substring(12, 14)}`
+    sex = (idCard[16] % 2 === 0) ? '女' : '男'
   } else {
-    birthday=`19${idCard.substring(6, 8)}-${idCard.substring(9, 10)}-${idCard.substring(11, 12)}`
-    sex=(idCard[14] % 2 === 0) ? 0 : 1
+    birthday = `19${idCard.substring(6, 8)}-${idCard.substring(8, 10)}-${idCard.substring(10, 12)}`
+    sex = (idCard[14] % 2 === 0) ? '女' : '男'
   }
 
   return { birthday, sex }
@@ -136,11 +113,11 @@ export const sortDate = (dateArr) => {
  * formate(new Date('2018-11-23') - new Date('2018-11-20')) // '72小时0分钟0秒'
  */
 export const formate = (time) => {
-  time = time/1000 // 单位秒
-  let hour =parseInt(time/3600)
-  let min  = parseInt(time%3600/60)
-  let sec = parseInt(time%3600%60)
-  return  hour + '小时' + min + '分钟' + sec + '秒'
+  time = time / 1000 // 单位秒
+  let hour = parseInt(time / 3600)
+  let min = parseInt(time % 3600 / 60)
+  let sec = parseInt(time % 3600 % 60)
+  return hour + '小时' + min + '分钟' + sec + '秒'
 }
 
 /**
@@ -150,14 +127,14 @@ export const formate = (time) => {
  * console.log(new Date('2018-11-20') - new Date('2018-11-23')) // -259200000
  * formate(new Date('2018-11-20') - new Date('2018-11-23')) // '已超时72小时0分钟0秒'
  */
-export const formate = (time) => {
-  let hour =parseInt(time/1000/3600)
-  let min  = parseInt((time/1000 - hour * 3600)/60)
-  let sec = parseInt(time/1000 - hour * 3600 - min * 60)
-  if(time>0){
-    return   sec >=0 ? hour + '小时' + min + '分钟' + sec + '秒' :'已超时'
-  }else{
-    return '已超时'+(-hour) + '小时'+(-min) + '分钟' + (-sec)+'秒'
+export const format = (time) => {
+  let hour = parseInt(time / 1000 / 3600)
+  let min = parseInt((time / 1000 - hour * 3600) / 60)
+  let sec = parseInt(time / 1000 - hour * 3600 - min * 60)
+  if (time > 0) {
+    return sec >= 0 ? hour + '小时' + min + '分钟' + sec + '秒' : '已超时'
+  } else {
+    return '已超时' + (-hour) + '小时' + (-min) + '分钟' + (-sec) + '秒'
   }
 }
 
@@ -166,8 +143,8 @@ export const formate = (time) => {
  * @param {*} date 日期参数
  */
 export const getWeek = (date) => {
-  const day = new new(date).getDay()
-  const mapWeek = ['日', '一',  '二', '三', '四', '五', '六']
+  const day = new Date(date).getDay()
+  const mapWeek = ['日', '一', '二', '三', '四', '五', '六']
   return mapWeek[day]
 }
 
@@ -203,12 +180,12 @@ export const getCurMonthLast = () => {
  * console.log("后天："+GetDateStr(2));
  */
 export const getDateStr = (addDayCount) => {
-  var dd = new Date();
-  dd.setDate(dd.getDate() + addDayCount); // 获取addDayCount天后的日期
-  var y = dd.getFullYear();
-  var m = (dd.getMonth() + 1) < 10 ? "0" + (dd.getMonth() + 1):(dd.getMonth() + 1); // 获取当前月份的日期，不足10补0
-  var d = dd.getDate()<10 ? "0"+dd.getDate() : dd.getDate(); // 获取当前几号，不足10补0
-  return y + "-" + m+ "-" + d;
+  var dd = new Date()
+  dd.setDate(dd.getDate() + addDayCount) // 获取addDayCount天后的日期
+  var y = dd.getFullYear()
+  var m = (dd.getMonth() + 1) < 10 ? '0' + (dd.getMonth() + 1) : (dd.getMonth() + 1) // 获取当前月份的日期，不足10补0
+  var d = dd.getDate() < 10 ? '0' + dd.getDate() : dd.getDate() // 获取当前几号，不足10补0
+  return y + '-' + m + '-' + d
 }
 
 /**
@@ -227,17 +204,25 @@ export const getDateStr1 = (dayCount) => {
  * @param {*} monthCount 几个月后的相对日
  */
 export const getRelateDate = (d, monthCount) => {
-  var d = new Date(d)
+  d = new Date(d)
   d.setMonth(d.getMonth() + 1)
   d.setDate(d.getDate() - 1)
   var yy1 = d.getFullYear()
-  var mm1 = d.getMonth()+1 //因为getMonth（）返回值是 0（一月） 到 11（十二月） 之间的一个整数。所以要给其加1
+  var mm1 = d.getMonth() + 1 // 因为getMonth（）返回值是 0（一月） 到 11（十二月） 之间的一个整数。所以要给其加1
   var dd1 = d.getDate()
-  if (mm1 < 10 ) {
-      mm1 = '0' + mm1
+  if (mm1 < 10) {
+    mm1 = '0' + mm1
   }
   if (dd1 < 10) {
     dd1 = '0' + dd1
   }
   return yy1 + '-' + mm1 + '-' + dd1
+}
+
+/**
+ * 兼容IE浏览器
+ * @param {*} d 作为日期构造函数的参数
+ */
+export const replaceFunc = (d) => {
+  return /-/g.test(d) ? new Date(d.replace(/-/g, '/')) : new Date(d)
 }
