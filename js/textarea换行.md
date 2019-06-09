@@ -71,6 +71,33 @@ string = string.replace(/&nbsp;/g, ' ')
 console.log(string) // '欢迎访问!\r\nhangge.com    做最好的开发者知识平台'
 ```
 
+4 通过`style="white-space: pre-line;"`，合并空白，但是保留换行
+
+```html
+<template>
+  <div>
+    <el-input type="textarea" v-model="textareaValue"></el-input>
+    <el-button @click="printFunc">打印textareaValue</el-button>
+    <p style="white-space: pre-line;">{{textareaValue}}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        textareaValue: ''
+      }
+    },
+    methods: {
+      printFunc () {
+        console.log(this.textareaValue.replace(/\r\n|\n/g, 'aaaa'))
+      }
+    }
+  }
+</script>
+```
+
 ## 3 html字符实体和js转义字符
 
 ### 3.1 html字符实体

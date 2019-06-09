@@ -436,7 +436,7 @@ export const batchDelete = (source, deleteList) => {
  * 将对象数组按某一个属性进行分组，转换成一个新的对象数组
  * @param {array} array 对象数组
  */
-const getTotalList1 = (array) => {
+export const getTotalList1 = (array) => {
   let result = []
   let obj = {}
   array.forEach(item => {
@@ -464,3 +464,32 @@ const getTotalList1 = (array) => {
 //   { date: '2019-05-03', activity: '乒乓球' },
 // ]
 // console.log(getTotalList1(activityList))
+
+export const getTotalList2 = (array) => {
+  let obj = {}
+  let res = array.reduce((result, item) => {
+    if (!obj[item.date]) {
+      const o = {
+        date: item.date,
+        list: [item]
+      }
+      result.push(o)
+      obj[item.date] = true
+    } else {
+      result.forEach(rItem => {
+        if (rItem.date === item.date) rItem.list.push(item)
+      })
+    }
+    return result
+  }, [])
+  return res
+}
+// var activityList = [
+//   { date: '2019-05-03', activity: '篮球' },
+//   { date: '2019-03-01', activity: '音乐' },
+//   { date: '2019-04-01', activity: '电影' },
+//   { date: '2019-04-20', activity: '书法' },
+//   { date: '2019-05-03', activity: '羽毛球' },
+//   { date: '2019-05-03', activity: '乒乓球' },
+// ]
+// console.log(getTotalList2(activityList))
