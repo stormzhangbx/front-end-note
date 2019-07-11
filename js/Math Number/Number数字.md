@@ -4,6 +4,8 @@
 
 parseInt、parseFloat是直接定义在全局对象window下的
 
+[参考](https://www.cnblogs.com/Juphy/p/7085197.html)
+
 ### 1.1 Number()
 
 ### 1.2 parseInt()
