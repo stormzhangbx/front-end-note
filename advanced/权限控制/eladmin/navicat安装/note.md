@@ -20,10 +20,13 @@
 
 ## 2 新建数据库
 
-在连接localhost_3306上右键-新建数据库
+在连接localhost_3306上右键-新建数据库。
 
 ![新建数据库](./image/02.png)
 
-数据库eladmin新建成功后，把.sql文件拖到这数据库上
+## 3 导入sql文件
 
+数据库eladmin新建成功后，通过sql文件快速导入表。
 
+![导入sql文件](./image/03.png)
+![导入sql文件](./image/04.png)

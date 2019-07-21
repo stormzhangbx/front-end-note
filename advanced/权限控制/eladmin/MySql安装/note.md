@@ -10,49 +10,49 @@
 ## MySql
 ### 1 安装
 
-下载window社区版本
+- 下载window社区版本
 ![下载MySql](./image/01.png)
 下载的zip版解压后就可以使用，免安装，解压后的文件放在D:\mysql-8.0.16-winx64。添加MySql环境变量，编辑用户变量下的path
 ![添加系统变量](./image/02.png)
-在D:\mysql-8.0.16-winx64下创建my.ini配置文件，配置如下：
+- 在D:\mysql-8.0.16-winx64下创建my.ini配置文件，配置如下：
 
-```ini
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
+  ```ini
+  [mysql]
+  # 设置mysql客户端默认字符集
+  default-character-set=utf8
 
-[mysqld]
-# 设置3306端口
-port = 3306
-# 设置mysql的安装目录
-basedir = D:\mysql-8.0.16-winx64
-# 设置 mysql数据库的数据的存放目录
-datadir = D:\mysql-8.0.16-winx64\data
-```
+  [mysqld]
+  # 设置3306端口
+  port = 3306
+  # 设置mysql的安装目录
+  basedir = D:\mysql-8.0.16-winx64
+  # 设置 mysql数据库的数据的存放目录
+  datadir = D:\mysql-8.0.16-winx64\data
+  ```
 
-初始化数据库：`mysqld --initialize --console`
+- 初始化数据库：`mysqld --initialize --console`
 
-执行完成后，会输出 root 用户的初始默认密码，如：
+- 执行完成后，会输出 root 用户的初始默认密码，如：
 
-```
-...
-2018-04-20T02:35:05.464644Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: APWCY5ws&hjQ
-...
-```
+  ```
+  ...
+  2018-04-20T02:35:05.464644Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: APWCY5ws&hjQ
+  ...
+  ```
 
-APWCY5ws&hjQ 就是初始密码，后续登录需要用到，你也可以在登陆后修改密码。
+  APWCY5ws&hjQ 就是初始密码，后续登录需要用到，你也可以在登陆后修改密码。
 
-输入以下安装命令：`mysqld install`
+- 输入以下安装命令：`mysqld install`
 
-启动输入以下命令即可：`net start mysql`，这一步等同于在电脑-管理-服务和应用程序-服务中启动MySql服务一样
+- 启动输入以下命令即可：`net start mysql`，这一步等同于在电脑-管理-服务和应用程序-服务中启动MySql服务一样
 
-在命令行中登录 MySQL：`mysql -u root -p`（表示使用密码来登录root用户） 然后输入密码即可
+- 在命令行中登录 MySQL：`mysql -u root -p`（表示使用密码来登录root用户） 然后输入密码即可
 
-退出登录：输入exit后回车
+- 退出登录：输入exit后回车
 
-注意：在登录MySql前需求先启动MySql服务
+- 注意：在登录MySql前需求先启动MySql服务
 
-初次登录后修改密码: `ALTER USER USER() IDENTIFIED BY '123456';`
+- 初次登录后修改密码: `ALTER USER USER() IDENTIFIED BY '123456';`
 
 ### 2 问题
 
