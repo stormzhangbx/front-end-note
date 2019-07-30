@@ -31,6 +31,18 @@
   ```
 
 - 初始化数据库：`mysqld --initialize --console`
+  如果执行上述命令报错，可以讲my.ini内容改为
+    ```ini
+  [mysql]
+  # 设置mysql客户端默认字符集
+  default-character-set=utf8
+
+  [mysqld]
+  # 设置3306端口
+  port = 3306
+  # 设置mysql的安装目录
+  basedir = D:\\mysql-8.0.16-winx64
+  ```
 
 - 执行完成后，会输出 root 用户的初始默认密码，如：
 
