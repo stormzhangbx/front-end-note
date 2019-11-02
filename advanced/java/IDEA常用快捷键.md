@@ -14,5 +14,6 @@ main + 回车|快速输出主函数
 `Ctrl` + `Shift` + `Enter`|行末加分号
 `Alt` + `Shift`|多光标操作
 `Alt` + `Shift` + 上下键|上下移动一行
+`Alt` + `Insert`|插入构造函数、Getter、Setter等
 `Shift` + 回车|在本行下面创建一行
 `Ctrl` + `F6`|重命名
