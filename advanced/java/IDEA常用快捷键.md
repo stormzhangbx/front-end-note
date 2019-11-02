@@ -12,6 +12,7 @@ main + 回车|快速输出主函数
 `Ctrl` + `Shift` + `F`|根据输入内容查找整个项目 或 指定目录内文件
 `Ctrl` + `Shift` + `R`|根据输入内容替换对应内容，范围为整个项目 或 指定目录内文件
 `Ctrl` + `Shift` + `Enter`|行末加分号
+`Ctrl` + `Shift` + N|按文件名全局搜索文件
 `Alt` + `Shift`|多光标操作
 `Alt` + `Shift` + 上下键|上下移动一行
 `Alt` + `Insert`|插入构造函数、Getter、Setter等
