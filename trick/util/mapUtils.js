@@ -1,7 +1,10 @@
-/*
-* 通过递归生成一个与arr结构
-* 相似的新对象数组
-*/
+// 树形数组分为两类，一类是每个节点都有children属性（叶子节点的children长度为0），一类是非叶子节点才有children属性
+
+/** --------- 1 ---------
+ * 相似的新对象数组（树形数组）
+ * @param {array} arr
+ * @example console.log(change1(arr1))
+ */
 export const change1 = (arr) => {
   let tem = [] // 声明一个临时数组
   arr.forEach(item => { // 遍历输入数组arr的每一项（为对象）
@@ -17,6 +20,11 @@ export const change1 = (arr) => {
   return tem
 }
 
+/** --------- 2 ---------
+ *
+ * @param {*} arr
+ * @example console.log(change2(arr2))
+ */
 export const change2 = (arr) => {
   let tem = []
   arr.forEach(item => {
@@ -30,61 +38,8 @@ export const change2 = (arr) => {
   })
   return tem
 }
-/* var arr1 = [
-  {
-    name: 'china',
-    children: [
-      {
-        name: 'hubei',
-        children: [
-          {
-            name: 'huangshi',
-            children: []  //对象参数由name和children组成，children即使为空，也要写上
-          }
-        ]
-      }
 
-    ]
-  },
-  {
-    name: 'japan',
-    children: [
-      {
-        name: 'tokyo',
-        children: []
-      }
-    ]
-  }
-]
-console.log(change1(arr1))
-
-var arr2 = [
-  {
-    name: 'china',
-    children: [
-      {
-        name: 'hubei',
-        children: [
-          {
-            name: 'huangshi',
-          }
-        ]
-      }
-
-    ]
-  },
-  {
-    name: 'japan',
-    children: [
-      {
-        name: 'tokyo',
-      }
-    ]
-  }
-]
-console.log(change2(arr2)) */
-
-/**
+/** --------- 3 ---------
  * 上述方法的另外一种实现形式
  * @param {array} itemList 结构是对象数组
  */
@@ -103,28 +58,8 @@ export const transfrom = (itemList) => {
   })
   return itemListNew
 }
-/* var itemList = [
-  {
-    structureName: '首页',
-    structureId: 1,
-    children: [
-      {
-        structureName: '国内',
-        structureId: 2,
-      },
-      {
-        structureName: '国外',
-        structureId: 3,
-      }
-    ]
-  },
-  {
-    structureName: '体育',
-    structureId: 4,
-  }
-] */
 
-/**
+/** --------- 4 ---------
  * 检测类型
  * @param {*} obj
  */
@@ -132,7 +67,11 @@ export const toType = (obj) => {
   return Object.prototype.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 
-// 处理数据格式
+/** --------- 5 ---------
+ * 处理数据格式
+ * @param {array} oldArr
+ * @example console.log(arrMap(arr5))
+ */
 export const arrMap = (oldArr) => {
   const newArr = []
   oldArr.forEach(item => {
@@ -150,36 +89,8 @@ export const arrMap = (oldArr) => {
   })
   return newArr
 }
-/* const arr = [
-  {
-    name: 'Jack',
-    age: 20,
-    friends: [
-      {
-        name: 'Marry',
-        age: 22
-      },
-      {
-        name: 'Harry',
-        age: 24
-      }
-    ]
-  }
-]
-const output = {
-  name: 'Jack',
-  age: 20,
-  Marry: {
-    name: 'Marry',
-    age: 22
-  },
-  Harry: {
-    name: 'Harry',
-    age: 24
-  }
-} */
 
-/**
+/** --------- 6 ---------
  * 将数组的某一元素上移或者下移
  * @param {string} type 操作类型，'up'表示上移，'down'表示下移
  * @param {array} array 要操作的数组
@@ -210,7 +121,7 @@ export const upOrDown = (type, array, index) => {
   return array
 }
 
-/**
+/** --------- 7 ---------
  * 重写forEach, 提高兼容性
  * @param {array} arr
  * @param {function} fn
@@ -225,9 +136,10 @@ export const forEach = (arr, fn) => {
   }
 }
 
-/**
+/** --------- 8 ---------
  * 获取树状结构数据中的某一个属性值
  * @param {array} targetArr
+ * @example console.log(getUrlList(arr8)) // 获取各级菜单中的url
  */
 export const getUrlList = (targetArr) => {
   let arr = []
@@ -239,107 +151,11 @@ export const getUrlList = (targetArr) => {
   })
   return arr
 }
-// const test = [
-//   {
-//     url: '',
-//     childMenus: [
-//       {
-//         url: '',
-//         childMenus: [
-//           {
-//             url: '/111',
-//             childMenus: []
-//           },
-//           {
-//             url: '/112',
-//             childMenus: []
-//           },
-//           {
-//             url: '/113',
-//             childMenus: []
-//           },
-//           {
-//             url: '/114',
-//             childMenus: []
-//           }
-//         ]
-//       },
-//       {
-//         url: '',
-//         childMenus: [
-//           {
-//             url: '/121',
-//             childMenus: []
-//           },
-//           {
-//             url: '/122',
-//             childMenus: []
-//           },
-//           {
-//             url: '/123',
-//             childMenus: []
-//           },
-//           {
-//             url: '/124',
-//             childMenus: []
-//           }
-//         ]
-//       }
-//     ]
-//   },
-//   {
-//     url: '',
-//     childMenus: [
-//       {
-//         url: '',
-//         childMenus: [
-//           {
-//             url: '/211',
-//             childMenus: []
-//           },
-//           {
-//             url: '/212',
-//             childMenus: []
-//           },
-//           {
-//             url: '/213',
-//             childMenus: []
-//           },
-//           {
-//             url: '/214',
-//             childMenus: []
-//           }
-//         ]
-//       },
-//       {
-//         url: '',
-//         childMenus: [
-//           {
-//             url: '/221',
-//             childMenus: []
-//           },
-//           {
-//             url: '/222',
-//             childMenus: []
-//           },
-//           {
-//             url: '/223',
-//             childMenus: []
-//           },
-//           {
-//             url: '/224',
-//             childMenus: []
-//           }
-//         ]
-//       }
-//     ]
-//   }
-// ]
-// console.log(getUrlList(test)) // 获取各级菜单中的url
 
-/**
+/** --------- 9 ---------
  * 对象数组去重
  * @param {array} array 对象数组
+ * @example console.log(removeDuplicate(arr9))
  */
 export const removeDuplicate = (array) => {
   let result = []
@@ -352,6 +168,12 @@ export const removeDuplicate = (array) => {
   })
   return result
 }
+
+/** --------- 10 ---------
+ *
+ * @param {*} array
+ * @example console.log(removeDuplicate1(arr9))
+ */
 export const removeDuplicate1 = (array) => {
   let obj = {}
   return array.reduce((newArr, item) => {
@@ -362,19 +184,11 @@ export const removeDuplicate1 = (array) => {
     return newArr
   }, [])
 }
-// var arr = [
-//   { key: '01', value: '乐乐' },
-//   { key: '02', value: '博博' },
-//   { key: '03', value: '淘淘' },
-//   { key: '04', value: '哈哈' },
-//   { key: '01', value: '乐乐' }
-// ]
-// console.log(removeDuplicate(arr))
-// console.log(removeDuplicate1(arr))
 
-/**
+/** --------- 11 ---------
  * 合并（相加）对象数组中同一类型的项
  * @param {array} array
+ * @example console.log(getTotalList(arr11)) // costItem 费用项目，amount金额，accountId所属账号
  */
 export const getTotalList = (array) => {
   let result = []
@@ -393,20 +207,12 @@ export const getTotalList = (array) => {
   })
   return result // 可以通过数组map方法处理后再返回想要的数据结构
 }
-// costItem 费用项目，amount金额，accountId所属账号
-// var arr = [
-//   { costItem: '护理费', amount: '90', accountId: 1 },
-//   { costItem: '床位费', amount: '100', accountId: 1 },
-//   { costItem: '餐饮费', amount: '80', accountId: 2 },
-//   { costItem: '电费', amount: '70', accountId: 3 },
-//   { costItem: '水费', amount: '80', accountId: 3 },
-// ]
-// console.log(getTotalList(arr))
 
-/**
+/** --------- 12 ---------
  * 对象数组批量删除
  * @param {array} source 源数组
  * @param {array} deleteList 要删除的项组成的数组
+ * @example batchDelete(arr12, deleteList); console.log(arr12)
  */
 export const batchDelete = (source, deleteList) => {
   for (let i = 0; i < source.length; i++) {
@@ -418,23 +224,11 @@ export const batchDelete = (source, deleteList) => {
     }
   }
 }
-// var arr = [
-//   { id: 1, key: '01', value: '乐乐' },
-//   { id: 2, key: '02', value: '博博' },
-//   { id: 3, key: '03', value: '淘淘' },
-//   { id: 4, key: '04', value: '哈哈' },
-//   { id: 5, key: '01', value: '乐乐' }
-// ]
-// var deleteList = [
-//   { id: 3, key: '03', value: '淘淘' },
-//   { id: 4, key: '04', value: '哈哈' },
-// ]
-// batchDelete(arr, deleteList)
-// console.log(arr)
 
-/**
+/** --------- 13 ---------
  * 将对象数组按某一个属性进行分组，转换成一个新的对象数组
  * @param {array} array 对象数组
+ * @example console.log(getTotalList1(arr13))
  */
 export const getTotalList1 = (array) => {
   let result = []
@@ -455,16 +249,12 @@ export const getTotalList1 = (array) => {
   })
   return result
 }
-// var activityList = [
-//   { date: '2019-05-03', activity: '篮球' },
-//   { date: '2019-03-01', activity: '音乐' },
-//   { date: '2019-04-01', activity: '电影' },
-//   { date: '2019-04-20', activity: '书法' },
-//   { date: '2019-05-03', activity: '羽毛球' },
-//   { date: '2019-05-03', activity: '乒乓球' },
-// ]
-// console.log(getTotalList1(activityList))
 
+/** --------- 14 ---------
+ *
+ * @param {array} array
+ * @example console.log(getTotalList2(arr13))
+ */
 export const getTotalList2 = (array) => {
   let obj = {}
   let res = array.reduce((result, item) => {
@@ -484,12 +274,57 @@ export const getTotalList2 = (array) => {
   }, [])
   return res
 }
-// var activityList = [
-//   { date: '2019-05-03', activity: '篮球' },
-//   { date: '2019-03-01', activity: '音乐' },
-//   { date: '2019-04-01', activity: '电影' },
-//   { date: '2019-04-20', activity: '书法' },
-//   { date: '2019-05-03', activity: '羽毛球' },
-//   { date: '2019-05-03', activity: '乒乓球' },
-// ]
-// console.log(getTotalList2(activityList))
+
+/** --------- 15 ---------
+ * 给每个节点添加floor属性，表示该节点所处层数
+ * @param {*} treeArr 树形数组
+ * @example console.log(addFloor(arr15))
+ */
+const addFloor = (treeArr) => {
+  const each = (arr, floor) => {
+    arr.forEach(item => {
+      item.floor = floor
+      if (item.children && item.children.length) each(item.children, floor + 1)
+    })
+    return arr
+  }
+  return each(treeArr, 1)
+}
+
+/** --------- 16 ---------
+ * 获取树形数组最深层级数
+ * @param {array} treeArr 树形数组
+ * @example console.log(getMaxFloor(arr15))
+ */
+const getMaxFloor = (treeArr) => {
+  let max = 0;
+  const each = (arr, floor) => {
+    arr.forEach(item => {
+      item.floor = floor
+      if (floor > max) max = floor
+      if (item.children && item.children.length) each(item.children, floor + 1)
+    })
+  }
+  each(treeArr, 1)
+  return max
+}
+
+/** --------- 17 ---------
+ * 获取所有叶子节点
+ * @param {array} treeArr 树形数组
+ * @example console.log(getAllLeaf(arr15))
+ */
+const getAllLeaf = (treeArr) => {
+  let result = []
+  const each = (arr) => {
+    arr.forEach(item => {
+      if (!item.children) {
+        result.push(item)
+      } else {
+        each(item.children)
+      }
+    })
+  }
+  each(data)
+  return result
+}
