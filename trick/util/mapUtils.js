@@ -210,7 +210,7 @@ export const getTotalList = (array) => {
 
 /** --------- 12 ---------
  * 对象数组批量删除
- * @param {array} source 源数组
+ * @param {array} source 源数组，每项数据都有唯一标识，如id
  * @param {array} deleteList 要删除的项组成的数组
  * @example batchDelete(arr12, deleteList); console.log(arr12)
  */
