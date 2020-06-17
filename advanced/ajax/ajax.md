@@ -67,3 +67,30 @@ xhr.onreadystatechange = function () {
 xhr.open('GET', '/data.json')
 xhr.send('userName=zbx')
 ```
+
+创建 XMLHttpRequest 对象（xhr）后，就可以设置 timeout、responseType属性。只有当执行了 open() 后、send()前才可以设置请求头，即执行 setResponseHeader()。
+
+当服务器端在设置的timeout时间内没有响应请求，xhr 即发生 timeout 事件，导致请求终止。
+
+默认情况下xhr.responseType的值为 `text`，请求成功后，`xhr.response`、`xhr.responseText`为字符串。当设置 `xhr.responseType = 'json'`，且服务器端返回值是json格式，则`xhr.response`是一个JavaScript对象。
+
+```js
+var xhr = new XMLHttpRequest()
+console.log(xhr) // 打印xhr对象
+xhr.timeout = 3000 // 设置超时时间为3000毫秒
+xhr.onload = function() { // 请求完成时触发
+  console.log('onload', this) // this标识当前的xhr对象
+}
+xhr.onerror = function() { // 请求遇到错误时触发
+  console.log('onerror', this)
+}
+xhr.onabort = function() { // 当请求被停止时触发，例如调用xhr.abort()时
+  console.log('onabort', this)
+}
+xhr.ontimeout = function() { // 在预设时间内没有收到响应时触发
+  console.log('ontimeout', this)
+}
+xhr.open('GET', 'http://localhost:8080/user/1')
+xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+xhr.send()
+```
