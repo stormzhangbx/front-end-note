@@ -1,5 +1,7 @@
 # note
 
+[flex 布局的基本概念](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+
 ## 1 容器的属性
 
 ### 1.2 flex-direction

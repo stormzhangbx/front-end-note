@@ -1,5 +1,12 @@
 # $event
 
+v-on 的值可以是事件处理器（即一个方法名），或者内联语句（即Javascript语句），如果使是内联语句，语句内可以访问一个 $event property：
+
+```html
+<button @click="handle('ok', $event)">按钮</button>
+<CustomComponent @customMethod="fun($event)"></CustomComponent>
+```
+
 ## 1 原生dom事件
 
 对于原生dom事件，$event表示的是一个事件对象
@@ -9,9 +16,10 @@
 ```html
 <template>
   <div>
-    <div @click="clickFunc">hello</div>
     <!-- 这里没有大括号，相当于 -->
     <!-- <div @click="clickFunc($event)"></div> -->
+    <div @click="clickFunc">hello</div>
+    
     <!-- 当事件逻辑较少时可以直接写在模板上 -->
     <div @click="$event.target.innerHTML = 'world'">hello</div>
   </div>
@@ -49,6 +57,8 @@
 ```
 
 ## 2 自定义事件
+
+[使用事件抛出一个值](https://cn.vuejs.org/v2/guide/components.html#%E4%BD%BF%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%8A%9B%E5%87%BA%E4%B8%80%E4%B8%AA%E5%80%BC)
 
 对于自定义事件，$event表示的是自定义事件参数
 

@@ -153,6 +153,25 @@ export const getUrlList = (targetArr) => {
 }
 
 /** --------- 9 ---------
+ * 获取树状结构数据中的某一个属性值，并且带有祖先值
+ * @param {array} arr 对象数组
+ * @param {string} parent 祖先值
+ * @example console.log(process(arr15, '))
+ */
+export const process = (arr, parent) => {
+  if (!arr.length) return []
+  let result = []
+  arr.forEach(item => {
+    result.push(parent + '/' + item.name)
+    parent = parent + '/' + item.name
+    if (item.children && item.children.length) {
+      result = result.concat(process(item.children, parent))
+    }
+  })
+  return result
+}
+
+/** --------- 9 ---------
  * 对象数组去重
  * @param {array} array 对象数组
  * @example console.log(removeDuplicate(arr9))
