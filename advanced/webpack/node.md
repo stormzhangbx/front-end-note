@@ -1,5 +1,9 @@
 # webpack
 
+[Webpack 4 和单页应用入门](https://github.com/wallstreetcn/webpack-and-spa-guide)
+
+[手摸手，带你用合理的姿势使用webpack4（上）](https://segmentfault.com/a/1190000015919863)
+
 ## 1 [bundle 分析(bundle analysis)](https://www.webpackjs.com/guides/code-splitting/#bundle-%E5%88%86%E6%9E%90-bundle-analysis-)
 
 [官方分析工具](http://webpack.github.io/analyse/)

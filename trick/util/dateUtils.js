@@ -24,7 +24,7 @@ export const getDateList = (startDate, endDate) => {
  */
 export const formatDate = (d, format = 'yyyy-MM-dd hh:mm:ss') => {
   if (!d) return
-  d = /-/g.test(d) ? new Date(d.replace(/-/g, '/')) : d = new Date(d)
+  d = /-/g.test(d) ? new Date(d.replace(/-/g, '/')) : new Date(d)
   const year = d.getFullYear()
   const month = d.getMonth() + 1 // 月份是从0开始的
   const day = d.getDate()

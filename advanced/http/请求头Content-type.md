@@ -60,6 +60,7 @@ axios.request({
 ## 3 种常用的Content-type
 
 ### 3.1 application/x-www-form-urlencoded;charset=UTF-8
+
 `<form>`属性enctype、jquery ajax 配置项contentType的默认值都是这个。参数以`key1=val1&key2=val2&key3=val3`形式传递。如
 ```
 POST http://www.example.com HTTP/1.1
@@ -69,6 +70,7 @@ title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 ```
 
 ### 3.2 multipart/form-data
+
 这又是一个常见的 POST 数据提交的方式。我们使用表单上传文件时，必须让 form 的 enctyped 等于这个值。请求格式如下
 
 ```
@@ -88,6 +90,7 @@ PNG ... content of chrome.png ...
 ```
 
 ### 3.3 text/xml
+
 XML-RPC（XML Remote Procedure Call）。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：
 ```
 POST http://www.example.com HTTP/1.1
@@ -104,7 +107,8 @@ Content-Type: text/xml
 </methodcall>
 ```
 
-### 3.4 applition/json;charset=UTF-8
+### 3.4 application/json;charset=UTF-8
+
 实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 JSON 字符串。可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。如
 ```js
 var data = {'title':'test', 'sub' : [1,2,3]}

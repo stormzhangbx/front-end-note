@@ -99,6 +99,6 @@ export default {
 即将`:isShow="isVisible" @update:isShow="val => isVisible = val"`
 简化为`:isShow="isVisible"`
 
-![sync01](./image/sync01.png)
+![sync01](../image/sync01.png)
 
 [.sync 修饰符](https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)

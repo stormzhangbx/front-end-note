@@ -68,7 +68,7 @@ xhr.open('GET', '/data.json')
 xhr.send('userName=zbx')
 ```
 
-创建 XMLHttpRequest 对象（xhr）后，就可以设置 timeout、responseType属性。只有当执行了 open() 后、send()前才可以设置请求头，即执行 setResponseHeader()。
+创建 XMLHttpRequest 对象（xhr）后，就可以设置 timeout、responseType属性。只有当执行了 open() 后、send()前才可以设置请求头，即执行 setRequestHeader()。
 
 当服务器端在设置的timeout时间内没有响应请求，xhr 即发生 timeout 事件，导致请求终止。
 
