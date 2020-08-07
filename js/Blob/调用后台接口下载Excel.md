@@ -11,7 +11,7 @@ $('#download').click(function () {
   xhr.open('POST', 'url', true)
   // 把 responseType 设为 blob，表示服务器传回的是二进制对象
   xhr.responseType = 'blob'
-  // 定义请求完成的处理函数，请求前也可以增加加载框/禁用下载按钮逻辑
+  // 定义请求完成的处理函数，请求前也可以增加loading、禁用下载按钮逻辑
   xhr.onload = function () {
     // 如果想要关闭loading，可以放在这里
     if (this.status === 200) {

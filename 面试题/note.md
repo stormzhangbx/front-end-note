@@ -1,7 +1,5 @@
 # note
 
-[web大前端面试——JavaScript](https://www.jianshu.com/p/4840a90751e1)
-
 [前端面试题（三）](https://blog.csdn.net/sysuzjz/article/details/104858308)
 
 1. 讲一讲application/x-www-form-urlencoded、multipart/form-data
