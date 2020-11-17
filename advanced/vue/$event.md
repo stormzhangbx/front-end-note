@@ -1,6 +1,6 @@
 # $event
 
-v-on 的值可以是事件处理器（即一个方法名），或者内联语句（即Javascript语句），如果使是内联语句，语句内可以访问一个 $event property：
+v-on 的值可以是事件处理器（即一个方法名），或者内联语句（即Javascript语句），如果是内联语句，语句内可以访问一个 $event property：
 
 ```html
 <button @click="handle('ok', $event)">按钮</button>
