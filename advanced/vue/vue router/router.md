@@ -4,7 +4,7 @@
 
 路由常用于“页面”间跳转，跳转时常常需要携带一些参数，可以通过以下几种方式：
 
-1. 通过动态路由
+### 1.1 通过动态路由
 
    ```javascript
    // 路由配置
@@ -19,8 +19,9 @@
    this.$router.push('/detail/001')
    ```
 
-  参数值会被设置到`this.$route.params.id`，这种方式最简单，但不适合传递多个参数
-2. 通过params
+  参数值会被设置到`this.$route.params.id`，这种方式最简单，但不适合传递多个参数。刷新页面后参数仍然存在。
+  
+### 1.2 通过params
 
    ```javascript
    // 路由配置
@@ -42,8 +43,8 @@
    })
    ```
 
-   参数值会被设置到`this.$route.params.name`
-3. 通过query
+   参数值会被设置到`this.$route.params.name`。刷新页面后，参数会丢失
+### 1.3 通过query
 
    ```javascript
    // 路由配置
@@ -66,7 +67,7 @@
 
    参数值会被设置到`this.$route.query.name`
 
-总结，query要用path来引入，params要用name来引入，接收参数都是类似的，分别是`this.$route.query.name`和`this.$route.params.name`。
+总结，query要用path来引入，params要用name来引入，接收参数都是类似的，分别是`this.$route.query.name`和`this.$route.params.name`。刷新页面后参数仍然存在。
 
 ## 2 声明式导航、编程式导航
 
