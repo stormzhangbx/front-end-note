@@ -1,5 +1,7 @@
 # 模块
 
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)
+
 一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须输出该变量（作为一个接口暴露出去）
 
 ## 1 输出
@@ -42,7 +44,7 @@ export default {
 
 `export default`用于指定模块默认输出，因此一个模块中可以有多个`export`，但最多只能有一个`export default`
 
-本质上，export default就是输出一个叫做default的变量或方法，然后输入时系统允许你为它取任意名字。所以，下面的写法是有效的。
+本质上，export default 就是输出一个叫做default的变量或方法，然后输入时系统允许你为它取任意名字。所以，下面的写法是有效的。
 
 ```js
 // modules.js
@@ -100,6 +102,6 @@ import { default as foo } from 'modules' // 等同于 import foo from 'modules'
 - 同时输入通过`export`，`export default`输出的接口（即一条import语句中，同时输入默认方法和其他接口）， 如下
   `import randomName, { export1, export2, export3 } from './module.js'`
 
-import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js后缀可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。
-`import {myMethod} from 'util'`
+import 后面的 from 指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js后缀可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。
+`import { myMethod } from 'util'`
 上面代码中，util是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块（**如果使用webpack，其会帮我们做这个工作**）
