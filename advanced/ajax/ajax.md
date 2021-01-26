@@ -79,7 +79,7 @@ var xhr = new XMLHttpRequest()
 console.log(xhr) // 打印xhr对象
 xhr.timeout = 3000 // 设置超时时间为3000毫秒
 xhr.onload = function() { // 请求完成时触发
-  console.log('onload', this) // this标识当前的xhr对象
+  console.log('onload', this) // this表示当前的xhr对象
 }
 xhr.onerror = function() { // 请求遇到错误时触发
   console.log('onerror', this)

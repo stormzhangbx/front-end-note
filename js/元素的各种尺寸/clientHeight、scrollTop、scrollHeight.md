@@ -22,16 +22,16 @@ scrollHeight
 
 ```html
 <style>
-* {
-  padding: 0;
-  margin: 0;
-}
-.wrapper {
-  height: 100px;
-  margin: 100px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-}
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .wrapper {
+    height: 100px;
+    margin: 100px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+  }
 </style>
 <div class="wrapper">
   <ul class="list">

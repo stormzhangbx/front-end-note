@@ -71,7 +71,7 @@ title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 
 ### 3.2 multipart/form-data
 
-这又是一个常见的 POST 数据提交的方式。我们使用表单上传文件时，必须让 form 的 enctyped 等于这个值。请求格式如下
+这又是一个常见的 POST 数据提交的方式。我们使用表单上传文件时，必须让 form 的 enctype 等于这个值。请求格式如下
 
 ```
 POST /info HTTP/1.1
