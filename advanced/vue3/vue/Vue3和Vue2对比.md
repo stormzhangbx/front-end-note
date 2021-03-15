@@ -90,6 +90,8 @@ export default {
 ```
 ## 2.2 Vue3
 
+选项式API
+
 ```html
 <template>
   <div class="about">
@@ -109,6 +111,8 @@ export default {
 }
 </script
 ```
+
+组合式API
 
 ```html
 <template>
@@ -158,4 +162,13 @@ export default defineComponent({
 
 [Vue3 - defineComponent解决了什么？](https://blog.csdn.net/qq_36157085/article/details/109498473)
 
+defineComponent 函数，只是对 setup 函数封装，返回一个对象：
+
+```js
+export function defineComponent(options: unknown) {
+  return isFunction(options) ? {setup: options} : options
+}
+```
+
+defineComponent 最重要的是：在 TypeScript 下，给予组件正确的参数类型推断。
 

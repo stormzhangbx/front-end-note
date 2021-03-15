@@ -53,7 +53,7 @@ Vue Devtools:
 
 在 js 中访问和修改 address 都是通过 state.address 形式，在模板中可以直接使用 address。
 
-在js文件中操作ref对象创建的值需要使用 .value 在模板中则可以直接使用，因为在模板中会自动添加。value
+在js文件中操作ref对象创建的值需要使用 .value，在模板中则可以直接使用，因为在模板中会自动添加 .value
 
 一般使用 reactive，而少使用 ref
 
@@ -117,10 +117,7 @@ const { name } = toRefs(props)
 console.log(name.value)
 ```
 
-
-
-
-组合式 API 不是用来替代选项式 API，它的出现是为了解决选项式 API中存在的缺点，它很好的解决了逻辑关注点分离的问题，接用管网中的示例代码
+组合式 API 不是用来替代选项式 API，它的出现是为了解决选项式 API中存在的缺点，它很好的解决了逻辑关注点分离的问题，借用官网的示例代码
 
 ![05](./images/05.png)
 
